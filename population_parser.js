@@ -6,15 +6,15 @@ var population = {}
 d3.csv(state_csv, function(state_data){
 
 	state_data.forEach(function(s){
+		var empty = {}
 		population[s.State] = []
-		population[s.State].append(s.StatePopulation)
-		population[s.State].append({})
+		population[s.State].push(s.StatePopulation)
+		population[s.State].push(empty)
+
 	});
 
-	d3.csv(county_csv, function(county_data)){
-
+	d3.csv(county_csv, function(county_data){
 		county_data.forEach(function(c){
-
 
 			if(+c.FIPSCode <= 1133){
 				population["Alabama"][1][c.FIPSCode] = [c.CountyName,c.PopulationEstimate_2012]
@@ -49,7 +49,7 @@ d3.csv(state_csv, function(state_data){
 			}//Delaware
 
 			if(+c.FIPSCode == 11001){
-				population["DC"][1][c.FIPSCode] = [c.CountyName,c.PopulationEstimate_2012]
+				population["District of Columbia"][1][c.FIPSCode] = [c.CountyName,c.PopulationEstimate_2012]
 			}//DC
 
 			if(+c.FIPSCode >= 12001 & +c.FIPSCode <= 12133){
@@ -220,10 +220,8 @@ d3.csv(state_csv, function(state_data){
 				population["Wyoming"][1][c.FIPSCode] = [c.CountyName,c.PopulationEstimate_2012]
 			}//Wyoming
 
-
-
 		});
-
+		
 	});
-
+	
 });
