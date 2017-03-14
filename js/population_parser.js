@@ -1,5 +1,5 @@
-const state_csv = "./data/2012StatePop.csv"
-const county_csv = "./data/CountyPop.csv"
+const state_csv = "../data/2012StatePop.csv"
+const county_csv = "../data/CountyPop.csv"
 
 var population = {}
 
