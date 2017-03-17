@@ -14,6 +14,7 @@ for (var i in CategoryNames)
 
 // Generate stateMap
 var dataObject = {};
+var categoryObject = {};
 
 var LoadData = function()
 {
@@ -28,12 +29,13 @@ var LoadData = function()
         allData.forEach(function(m,index) 
         {
           var category = CategoryNames[index];
-          var newCatObj = {};
+          var newCatSet = new Set();
           for (var propertystart in m[0])
           {
             if (propertystart != "FIPS")
             {
-            newCatObj[propertystart] = d3.map();
+            newCatSet.add(propertystart);
+            dataObject[propertystart] = d3.map();
             }
           }
           m.forEach(function(d) 
@@ -41,15 +43,15 @@ var LoadData = function()
            for (var property in d) //iterates through properties of d
             if (property != "FIPS")
             {
-              newCatObj[property].set(+d.FIPS, d[property]);
+              dataObject[property].set(+d.FIPS, d[property]);
             }
-            dataObject[category] = newCatObj;
+            categoryObject[category] = newCatSet;
          });
       }); //loops through all rows (m) of 
      } // after files load function
     }); // d3.csv
   }); // foreach file
-  console.log(dataObject);  
+  console.log(dataObject, categoryObject);  
 }// end LoadData function
 
 LoadData();
