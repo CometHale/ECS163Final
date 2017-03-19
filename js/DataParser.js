@@ -12,12 +12,20 @@ for (var i in CategoryNames)
 }
 
 
-// Generate stateMap
-dataObject = {};
-categoryObject = {};
+// Generate data objects.
+var dataObject = {};
+var categoryObject = {};
+var varKey = {};
 
 var LoadData = function()
 {
+  d3.tsv("data/VariableKey.tsv", function(data) {
+    data.forEach(function(d) {
+    console.log(d.Variable_description);
+      varKey[d.Variable_code] = d.Variable_description;
+    });
+  });
+  
   var allData = [];
   Filenames.forEach(function(f,i){
     d3.csv(f,function(data){
