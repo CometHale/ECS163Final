@@ -43,7 +43,12 @@ var LoadData = function()
            for (var property in d) //iterates through properties of d
             if (property != "FIPS")
             {
-              dataObject[property].set(+d.FIPS, d[property]);
+              if (d.FIPS == "max")
+              {
+                dataObject[property].set("max", d[property]);
+              } else {
+                dataObject[property].set(+d.FIPS, d[property]);
+              }
             }
             categoryObject[category] = newCatSet;
          });
