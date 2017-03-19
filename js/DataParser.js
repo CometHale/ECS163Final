@@ -7,14 +7,14 @@ var Filenames = [];
 for (var i in CategoryNames)
 { 
     var cat = CategoryNames[i];
-    var filename = "../data/" + cat + ".csv";
+    var filename = "data/" + cat + ".csv";
     Filenames.push(filename);
 }
 
 
 // Generate stateMap
-var dataObject = {};
-var categoryObject = {};
+dataObject = {};
+categoryObject = {};
 
 var LoadData = function()
 {
