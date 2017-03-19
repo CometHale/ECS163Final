@@ -3,6 +3,65 @@ h2{
     font-family: 'Cinzel';font-size: 25px;
   }
 
+
+/* color information for selections for map to bars */
+  .selection1
+  {
+    fill: #ff0000;		/* red */
+    stroke: #ff0000;
+  }
+  
+  .selection2
+  {
+    fill: #009933;		/* green */		
+    stroke: #009933;
+  }
+
+  .selection3
+  {
+    fill: #3333ff;		/* blue */  
+    stroke: #3333ff;
+  }
+
+  .selection4
+  {
+    fill: #660066; /* dark purple */
+    stroke: #660066;
+  }
+
+  .selection5
+  {
+    fill: #ff9900;		/* orange */
+    stroke: #ff9900;
+  }
+
+
+  .active{
+
+    stroke-width: 1.5px;
+
+    fill: white;
+
+    stroke: yellow;
+
+  }
+
+
+/* style for the map */
+.counties {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+}
+
+
 /*div#chord-chart {
 
   }*/
