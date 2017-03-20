@@ -1,8 +1,6 @@
-var scatterDrawn = false;
-
 var loadChord = function(){
 
-  //Setting up the matrix	
+	//Setting up the matrix	
 	var chord_matrix = []
 	var variable_array = []
 	var category_var_array = {}
@@ -63,6 +61,8 @@ var loadChord = function(){
 	    	return color(d.index); 
 	    })
 	    .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
+	    .on("mouseover",group_mouseover)
+	    .on("mouseout",group_mouseout)
 	    .attr("d", arc);
 	 	
 	var groupText = group.append("text")
@@ -100,7 +100,10 @@ var loadChord = function(){
 	  .selectAll("path")
 	  .data(function(chords) { return chords; })
 	  .enter().append("path")
-	  	.attr("class","chord-path")
+	  	.attr("class",function(d){
+
+	  		return "chord-path " + " path-group-" + d.source.index
+	  	})
 	  	.attr("id", function(d,i){
 	  		return "path-" + i
 	  	})
@@ -108,10 +111,31 @@ var loadChord = function(){
 	   	.on("mouseover", mouseover)
 	   	.on("mouseout", mouseout)
 	   	.on("click",ribbonclick)
-	    .style("fill", function(d) { return color(d.target.index); })
-	    .style("stroke", function(d) { return d3.rgb(color(d.target.index)).darker(); });
+	    .style("fill", function(d) { return color(d.source.index); })
+	    .style("stroke", function(d) { return d3.rgb(color(d.source.index)).darker(); });
 
-	
+
+	function group_mouseover(d, i) {
+		var selected_group_ribbons = $(".path-group-" + d.index)
+		$(".chord-path").each(function(path){
+        	var path_obj = $("#path-" + path)
+        	path_obj.addClass("fade");
+        });
+
+        selected_group_ribbons.each(function(path){
+        	$(this).removeClass("fade");
+        });
+
+	};
+
+	function group_mouseout(d, i) {
+		
+		$(".chord-path").each(function(path){
+        	var path_obj = $("#path-" + path)
+        	path_obj.removeClass("fade");
+        });
+	};
+
 	function mouseover(d, i) {
 
 		var selected_path = $("#path-" + i)
@@ -142,9 +166,6 @@ var loadChord = function(){
     	$('html, body').animate({
 	        scrollTop: $("#bipartite").offset().top
 	    }, 2000);
-
-      bpkey1 = null;
-      bpkey2 = null;
 
     	drawbp(cat_1,cat_2)
     }
