@@ -1,71 +1,71 @@
-Variable_code	Variable_description
-PCT_LACCESS_POP10	"Population, low access to store (%), 2010"
-PCT_LACCESS_LOWI10	"Low income & low access to store (%), 2010"
-PCT_LACCESS_CHILD10	"Children, low access to store (%), 2010"
-PCT_LACCESS_SENIORS10	"Seniors, low access to store (%), 2010"
-PCT_LACCESS_HHNV10	"Households, no car & low access to store (%), 2010"
-PC_SNAPBEN10	"SNAP benefits per capita, 2010"
-PC_WIC_REDEMP12	"WIC redemptions per capita, 2012"
-PCT_SNAP14	"SNAP participants (% pop), 2014"
-SNAP_PART_RATE10	"SNAP participants (% eligible pop), 2010"
-PCT_WIC14	"WIC participants (% pop), 2014"
-PCT_CACFP14	"Child & Adult Care (% pop), 2014"
-PCT_NHWHITE10	"% White, 2010"
-PCT_NHBLACK10	"% Black, 2010"
-PCT_HISP10	"% Hispanic, 2010"
-PCT_NHASIAN10	"% Asian, 2010"
-PCT_NHNA10	"% American Indian or Alaska Native, 2010"
-PCT_NHPI10	"% Hawaiian or Pacific Islander, 2010"
-PCT_65OLDER10	"% Population 65 years or older, 2010"
-PCT_18YOUNGER10	"% Population under age 18, 2010"
-MEDHHINC10	"Median household income, 2010"
-POVRATE10	"Poverty rate, 2010"
-CHILDPOVRATE10	"Child poverty rate, 2010"
-Unemployment_rate_2012	"Unemployment rate, 2012"
-P_NOHS	"Percent of adults with less than a high school diploma, 2011-2015"
-P_HSONLY	"Percent of adults with a high school diploma only, 2011-2015"
-P_SOMECOLLEGE	"Percent of adults completing some college or associate's degree, 2011-2015"
-P_BACHELORS	"Percent of adults with a bachelor's degree or higher, 2011-2015"
-RECFACPTH12	"Recreation & fitness facilities/1,000 pop, 2012"
-PCT_OBESE_ADULTS10	"Adult obesity rate (county), 2010"
-PCT_OBESE_CHILD11	"Low-income preschool obesity rate, 2009-11"
-PCT_HSPA09	"High schoolers physically active (%), 2009"
-PCT_DIABETES_ADULTS10	"Adult diabetes rate, 2010"
-FOODINSEC_10_12	"Household food insecurity (%, three-year average), 2010-12"
-VLFOODSEC_10_12	"Household very low food security (%, three-year average), 2010-12"
-FOODINSEC_CHILD_03_11	"Child food insecurity (% households, multiple-year average), 2003-11"
-FMRKTPTH13	"Farmers' markets/1,000 pop, 2013"
-PCT_FMRKT_SNAP13	"Farmers' markets that report accepting SNAP (%), 2013"
-PCT_FMRKT_WIC13	"Farmers' markets that report accepting WIC (%), 2013"
-PCT_FMRKT_WICCASH13	"Farmers' markets that report accepting WIC Cash (%), 2013"
-PCT_FMRKT_SFMNP13	"Farmers' markets that report accepting SFMNP (%), 2013"
-VEG_ACRESPTH07	"Vegetable acres harvested/1,000 pop, 2007"
-FRESHVEG_ACRESPTH07	"Vegetable acres harvested for fresh market/1,000 pop, 2007"
-ORCHARD_ACRESPTH07	"Orchard acres/1,000 pop, 2007"
-BERRY_ACRESPTH07	"Berry acres/1,000 pop, 2007"
-PC_DIRSALES07	"Direct farm sales per capita, 2007"
-AGRITRSM_RCT07	Agritourism Income
-GHVEG_SQFTPTH07	"Greenhouse veg and fresh herb sq feet/1,000 pop, 2007"
-SODATAX_STORES11	"Soda sales tax, retail stores, 2011"
-SODATAX_VENDM11	"Soda sales tax, vending, 2011"
-CHIPSTAX_STORES11	"Chip & pretzel sales tax, retail stores, 2011"
-CHIPSTAX_VENDM11	"Chip & pretzel sales tax, vending, 2011"
-FOOD_TAX11	"General food sales tax, retail stores, 2011"
-MILK_PRICE10	"Price of low-fat milk/national average, 2010"
-SODA_PRICE10	"Price of sodas/national average, 2010"
-MILK_SODA_PRICE10	"Price of low-fat milk/price of sodas, 2010"
-FFRPTH12	"Fast-food restaurants/1,000 pop, 2012"
-FSRPTH12	"Full-service restaurants/1,000 pop, 2012"
-PC_FFRSALES07	"Expenditures per capita, fast food, 2007"
-PC_FSRSALES07	"Expenditures per capita, restaurants, 2007"
-PCT_NSLP14	"National School Lunch Program participants (% pop), 2014"
-PCT_FREE_LUNCH10	"Students eligible for free lunch (%), 2010"
-PCT_REDUCED_LUNCH10	"Students eligible for reduced-price lunch (%), 2010"
-PCT_SBP14	"School Breakfast Program participants (% pop), 2014"
-PCT_SFSP14	"Summer Food Service Program participants (% pop), 2014"
-GROCPTH12	"Grocery stores/1,000 pop, 2012"
-SUPERCPTH12	"Supercenters & club stores/1,000 pop, 2012"
-CONVSPTH12	"Convenience stores/1,000 pop, 2012"
-SPECSPTH12	"Specialized food stores/1,000 pop, 2012"
-SNAPSPTH12	"SNAP-authorized stores/1,000 pop, 2012"
-WICSPTH12	"WIC-authorized stores/1,000 pop, 2012"
+Variable_code	Variable_description	Category_Code
+PCT_LACCESS_POP10	"Population, low access to store (%), 2010"	Access
+PCT_LACCESS_LOWI10	"Low income & low access to store (%), 2010"	Access
+PCT_LACCESS_CHILD10	"Children, low access to store (%), 2010"	Access
+PCT_LACCESS_SENIORS10	"Seniors, low access to store (%), 2010"	Access
+PCT_LACCESS_HHNV10	"Households, no car & low access to store (%), 2010"	Access
+PC_SNAPBEN10	"SNAP benefits per capita, 2010"	Assistance
+PC_WIC_REDEMP12	"WIC redemptions per capita, 2012"	Assistance
+PCT_SNAP14	"SNAP participants (% pop), 2014"	Assistance
+SNAP_PART_RATE10	"SNAP participants (% eligible pop), 2010"	Assistance
+PCT_WIC14	"WIC participants (% pop), 2014"	Assistance
+PCT_CACFP14	"Child & Adult Care (% pop), 2014"	Assistance
+PCT_NHWHITE10	"% White, 2010"	Demographics
+PCT_NHBLACK10	"% Black, 2010"	Demographics
+PCT_HISP10	"% Hispanic, 2010"	Demographics
+PCT_NHASIAN10	"% Asian, 2010"	Demographics
+PCT_NHNA10	"% American Indian or Alaska Native, 2010"	Demographics
+PCT_NHPI10	"% Hawaiian or Pacific Islander, 2010"	Demographics
+PCT_65OLDER10	"% Population 65 years or older, 2010"	Demographics
+PCT_18YOUNGER10	"% Population under age 18, 2010"	Demographics
+MEDHHINC10	"Median household income, 2010"	Economic
+POVRATE10	"Poverty rate, 2010"	Economic
+CHILDPOVRATE10	"Child poverty rate, 2010"	Economic
+Unemployment_rate_2012	"Unemployment rate, 2012"	Economic
+P_NOHS	"Percent of adults with less than a high school diploma, 2011-2015"	Economic
+P_HSONLY	"Percent of adults with a high school diploma only, 2011-2015"	Economic
+P_SOMECOLLEGE	"Percent of adults completing some college or associate's degree, 2011-2015"	Economic
+P_BACHELORS	"Percent of adults with a bachelor's degree or higher, 2011-2015"	Economic
+RECFACPTH12	"Recreation & fitness facilities/1,000 pop, 2012"	Health
+PCT_OBESE_ADULTS10	"Adult obesity rate (county), 2010"	Health
+PCT_OBESE_CHILD11	"Low-income preschool obesity rate, 2009-11"	Health
+PCT_HSPA09	"High schoolers physically active (%), 2009"	Health
+PCT_DIABETES_ADULTS10	"Adult diabetes rate, 2010"	Health
+FOODINSEC_10_12	"Household food insecurity (%, three-year average), 2010-12"	Insecurity
+VLFOODSEC_10_12	"Household very low food security (%, three-year average), 2010-12"	Insecurity
+FOODINSEC_CHILD_03_11	"Child food insecurity (% households, multiple-year average), 2003-11"	Insecurity
+FMRKTPTH13	"Farmers' markets/1,000 pop, 2013"	LocalFoodAccess
+PCT_FMRKT_SNAP13	"Farmers' markets that report accepting SNAP (%), 2013"	LocalFoodAccess
+PCT_FMRKT_WIC13	"Farmers' markets that report accepting WIC (%), 2013"	LocalFoodAccess
+PCT_FMRKT_WICCASH13	"Farmers' markets that report accepting WIC Cash (%), 2013"	LocalFoodAccess
+PCT_FMRKT_SFMNP13	"Farmers' markets that report accepting SFMNP (%), 2013"	LocalFoodAccess
+VEG_ACRESPTH07	"Vegetable acres harvested/1,000 pop, 2007"	LocalFoodProduction
+FRESHVEG_ACRESPTH07	"Vegetable acres harvested for fresh market/1,000 pop, 2007"	LocalFoodProduction
+ORCHARD_ACRESPTH07	"Orchard acres/1,000 pop, 2007"	LocalFoodProduction
+BERRY_ACRESPTH07	"Berry acres/1,000 pop, 2007"	LocalFoodProduction
+PC_DIRSALES07	"Direct farm sales per capita, 2007"	LocalFoodProduction
+AGRITRSM_RCT07	Agritourism Income	LocalFoodProduction
+GHVEG_SQFTPTH07	"Greenhouse veg and fresh herb sq feet/1,000 pop, 2007"	LocalFoodProduction
+SODATAX_STORES11	"Soda sales tax, retail stores, 2011"	FoodCosts
+SODATAX_VENDM11	"Soda sales tax, vending, 2011"	FoodCosts
+CHIPSTAX_STORES11	"Chip & pretzel sales tax, retail stores, 2011"	FoodCosts
+CHIPSTAX_VENDM11	"Chip & pretzel sales tax, vending, 2011"	FoodCosts
+FOOD_TAX11	"General food sales tax, retail stores, 2011"	FoodCosts
+MILK_PRICE10	"Price of low-fat milk/national average, 2010"	FoodCosts
+SODA_PRICE10	"Price of sodas/national average, 2010"	FoodCosts
+MILK_SODA_PRICE10	"Price of low-fat milk/price of sodas, 2010"	FoodCosts
+FFRPTH12	"Fast-food restaurants/1,000 pop, 2012"	Restaurants
+FSRPTH12	"Full-service restaurants/1,000 pop, 2012"	Restaurants
+PC_FFRSALES07	"Expenditures per capita, fast food, 2007"	Restaurants
+PC_FSRSALES07	"Expenditures per capita, restaurants, 2007"	Restaurants
+PCT_NSLP14	"National School Lunch Program participants (% pop), 2014"	StudentAssistance
+PCT_FREE_LUNCH10	"Students eligible for free lunch (%), 2010"	StudentAssistance
+PCT_REDUCED_LUNCH10	"Students eligible for reduced-price lunch (%), 2010"	StudentAssistance
+PCT_SBP14	"School Breakfast Program participants (% pop), 2014"	StudentAssistance
+PCT_SFSP14	"Summer Food Service Program participants (% pop), 2014"	StudentAssistance
+GROCPTH12	"Grocery stores/1,000 pop, 2012"	Stores
+SUPERCPTH12	"Supercenters & club stores/1,000 pop, 2012"	Stores
+CONVSPTH12	"Convenience stores/1,000 pop, 2012"	Stores
+SPECSPTH12	"Specialized food stores/1,000 pop, 2012"	Stores
+SNAPSPTH12	"SNAP-authorized stores/1,000 pop, 2012"	Stores
+WICSPTH12	"WIC-authorized stores/1,000 pop, 2012"	Stores
