@@ -65,3 +65,19 @@ h2{
 /*div#chord-chart {
 
   }*/
+
+  /*for bipartite clicking*/
+.currentbp {
+    stroke-width: 10px;
+  }
+
+#bipartite {
+  width: 1200px;
+  margin: auto;
+}
+
+/* for scatterplot */
+#scatterplot {
+  width: 1200px;
+  margin: auto;
+}

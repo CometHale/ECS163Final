@@ -56,7 +56,7 @@ var LoadData = function()
      } // after files load function
     }); // d3.csv
   }); // foreach file
-//          console.log(dataObject);
+         // console.log(dataObject);
 // console.log(categoryObject);
 // console.log(categoryObject["Access"]);
   
