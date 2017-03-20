@@ -136,6 +136,11 @@ var loadChord = function(){
     	var cat_2 = CategoryNames[d.target.index];
     	// bp_update(cat_1,cat_2);
     	$("#bipartite").empty();
+
+    	$('html, body').animate({
+	        scrollTop: $("#bipartite").offset().top
+	    }, 2000);
+
     	drawbp(cat_1,cat_2)
     }
 
