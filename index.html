@@ -20,181 +20,422 @@
 
 <!--
 COLORS:
-Access:
-Assistance:
-Demographics:
-Economic:
-Food Costs:
-Health:
-Insecurity:
-Local Food Access:
-Local Food Production:
-Restaurants:
-Stores:
-Student Assistance:
+Access: #5B2163
+Assistance: #1F255C
+Demographics: #BF7140
+Economic: #3F9D34
+Food Costs: #674822
+Health: #A13636
+Insecurity: #349D99
+Local Food Access: #C95EAD
+Local Food Production: #8C81D5
+Restaurants: #87D47D
+Stores: #C0CC66
+Student Assistance: #2E6D84
 -->
 
 
 </body>
-
-
-
- <div class="categories">
-        <h3 class="thriteencolumns">Categories</h3>
-        <select id="select-key" class="three columns">
-          <option value="Access" selected="selected"> Access</option> 
-          <option value="Assistance"> Assistance</option>
-          <option value="Demographics">Demographics</option>
-          <option value="Economic">Economic</option>
-          <option value="Education">Education</option>
-          <option value="FoodCosts">Food Costs</option>
-          <option value="Health">Health</option>
-          <option value="Insecurity">Insecurity</option>
-          <option value="LocalFoodAccess">Local Food Access</option>
-          <option value="LocalFoodProduction">Local Food Production</option>
-          <option value="Restaurants">Restaurants</option>
-          <option value="Stores">Stores</option>
-          <option value="StudentAssistance">Student Assistance</option>
-          
-        </select>
-      </div>
-
-  
-
-
 
 <div id =  "map-and-bar">
 	<div id = "map"></div>
 	<div id = "bars"></div>
 </div>
 
- <head>
-		
-		<!-- dependencies -->
-		<script src='http://d3js.org/d3.v3.min.js'></script>
-		<script src='./js/d3dropmenu.js'></script>
+<!--DropDown Menu-->
+<head>
+<style>
+.container {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
 
-		<script>
-		function applyStyling(root) {
-			root.nodes() 
-				.style('border', '1px solid #ddd')
-				.style('padding', '4px 8px')
-				.style('background', '#eee')
-				.style('width', '100px')
-				.on('mouseenter', function() {
-					d3.select(this).transition() // 'this' is a DOM element
-						.style('background', '#ee3')
-				})
-				.on('mouseleave', function() {
-					d3.select(this).transition()
-						.style('background', '#eee')
-				})
+.container a {
+    float: left;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+}
 
-			root.childNodes() // make top level a little different
-				.style('background', '#ccc')
-				.style('width', '75px')
-				.on('mouseenter', function() {
-					d3.select(this).transition()
-						.style('background', '#cc3')
-				})
-				.on('mouseleave', function() {
-					d3.select(this).transition()
-						.style('background', '#ccc')
-				})
-		}
-		</script>
-	</head>
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
 
-	<body>
-		<div id='demo'></div>
-		<script>
-			d3.element.dropdownmenu('#demo')
-				.add({
-					'Access' : {
-						'0' : null,
-						'1' : null,
-					},
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 12px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 13px;
+    background-color: inherit;
+}
 
-					'Assistance' : {
-						'0' : null,
-						'1' : null,
-					},
+.container a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
 
-					'Demographics' : {
-						'0' : null,
-						'1' : null,
-					},
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
 
-					'Economics' : {
-						'0' : null,
-						'1' : null,
-					},
-					'Education' : {
-						'0' : null,
-						'1' : null,
-						
-					},
-					'FoodCosts' : {
-						'0' : null,
-						'1' : null,
-						
-					},
-					'Health' : {
-						'0' : null,
-						'1' : null,
-					},
-				
-				})
-				.show() // basic menu has been created
-				// example of tree traversal
-				.firstChildNode() // Option 1
-				.nextSiblingNode() // Option 2
-				.lastChildNode() // 1
-				.add({
-					'New Option 1' : null,
-					'New Option 2' : null,
-				})
-				.add({
-					'New Option 3' : null,
-				})
-				.lastChildNode()
-				.add({
-					'Option 2.1.3.A' : null,
-					'Option 2.1.3.B' : null,
-				})
-				.root() // get back to the root
-				// and use d3 methods as well
-				.call(function(root) {
-					root.select('#option3-2').style('color', 'blue')
-				})
-				.call(applyStyling) // defined in header
-				.call(function(root) {
-					root.childLink().horizontal() // make top level horizontal
-				})
-				.call(function(root) {
-					var option = root.firstChildNode();
-					for (var i = 0; option != null; option = option.firstChildNode()) {
-						option.style('color', '#0' + (i%10) + (i%10));
-						i+=3;
-					}
-				})
-				// center it
-				.call(function(root) {
-					root.style('position', 'relative')
-						.style('left', '50%')
-			    		.style('margin-left', -parseInt(root.childLink().style('width'))/2 + 'px');
-				})
-		</script>
-	</body>
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction1()">Access</button>
+    <div class="dropdown-content" id="myDropdown1">
+      <a href="#">Population 2010</a>
+      <a href="#">Low Income 2010</a>
+      <a href="#">Children 2010</a>
+      <a href="#">Seniors 2010</a>
+      <a href="#">Household With No Car 2010</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction2()">Assistance</button>
+    <div class="dropdown-content" id="myDropdown2">
+      <a href="#">SNAP Benefits Per Capita 2010</a>
+      <a href="#">WIC Redeptions Per Capita 2012</a>
+      <a href="#">SNAP Participants 2014</a>
+      <a href="#">SNAP Participants (Eligible) 2010</a>
+      <a href="#">WIC Participants 2014</a>
+      <a href="#">Child and Adult Care 2014</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction3()">Demographics</button>
+    <div class="dropdown-content" id="myDropdown3">
+      <a href="#">White 2010</a>
+      <a href="#">Black 2010</a>
+      <a href="#">Hispanic 2010</a>
+      <a href="#">Asian 2010</a>
+      <a href="#">American Indian/Alaskan Native 2010</a>
+      <a href="#">Hawaiian/Pacific Islander 2010</a>
+      <a href="#">Population 65 or Older 2010</a>
+      <a href="#">Population 18 or Under 2010</a>
+     
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction4()">Economics</button>
+    <div class="dropdown-content" id="myDropdown4">
+     <a href="#">Median Household Income 2010</a>
+      <a href="#">Poverty Rate 2010</a>
+      <a href="#">Child Poverty Rate 2010</a>
+      <a href="#">Unemployment Rate 2012</a>
+      
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction5()">Education</button>
+    <div class="dropdown-content" id="myDropdown5">
+      <a href="#">Adults Less Than A High School Diploma</a>
+      <a href="#">Adults With A High School Diploma Only</a>
+      <a href="#">Adults With Some College Or Associate's Degree</a>
+      <a href="#">Adults With A Bachelors Degree Or Higher</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction6()">Food Costs</button>
+    <div class="dropdown-content" id="myDropdown6">
+      <a href="#">Price Of Low-Fat Milk (National Average) 2010</a>
+      <a href="#">Price Of Soda (National Average) 2010</a>
+      <a href="#">Price Of Low-Fat Milk/Price Of Soda 2010</a>
+       <a href="#">Soda Tax Sales In Stores 2011</a>
+      <a href="#">Soda Tax Sales On Vending 2011</a>
+      <a href="#">Chip And Pretzel Sales Tax In Sores 2011</a>
+      <a href="#">Chip and Pretzel Sales Tax On Vending 2011</a>
+      <a href="#">General Food Sales Tax in Stores 2011</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction7()">Health</button>
+    <div class="dropdown-content" id="myDropdown7">
+      <a href="#">Adult Diabetes 2010</a>
+      <a href="#">Adult Obesity 2010</a>
+      <a href="#">Child Obesity 2011</a>
+      <a href="#">High Schoolers Physically Active 2009</a>
+      <a href="#">Recreation And Fitness Facilities (Per 1,000 Population) 2012</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction8()">Insecurity</button>
+    <div class="dropdown-content" id="myDropdown8">
+      <a href="#">Household Food Insecurity (Three Year Average) 2010 - 2012</a>
+      <a href="#">Household Very Low Food Security (Three Year Average) 2010 - 2012</a>
+      <a href="#">Child Very Low Food Security (Multiple Year Average) 2002 - 2012</a>
+      <a href="#">Child Food Insecurity (Multiple Year Average) 2003 - 2011</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction9()">Local Food Access</button>
+    <div class="dropdown-content" id="myDropdown9">
+      <a href="#">Farmers' Markets (Per 1,000 Population) 2013</a>
+      <a href="#">Farmers' Markets Accepting SNAP 2013</a>
+      <a href="#">Farmers' Markets Accepting WIC 2013</a>
+      <a href="#">Farmers' Markets Accepting WIC Cash 2013/a>
+      <a href="#">Farmers' Markets Accepting SFMNP 2013</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction10()">Local Food Population</button>
+    <div class="dropdown-content" id="myDropdown10">
+      <a href="#">Vegetable Acres Harvested (Per 1,000 Population) 2007</a>
+      <a href="#">Vegetable Acres Harvested For Fresh Market (Per 1,000 Population) 2007</a>
+      <a href="#">Orchard Acres (Per 1,000 Population) 2007 </a>
+      <a href="#">Berry Acres (Per 1,000 Population) 2007</a>
+      <a href="#">Direct Farm Sales (Per Capita) 2007</a>
+      <a href="#">Agritourism Income 2007</a>
+      <a href="#">Greenhouse Vegetable And Fresh Herb Sq. Feet (Per 1,000 Population) 2007</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction11()">Restaurants</button>
+    <div class="dropdown-content" id="myDropdown11">
+      <a href="#">Fast Food Restaurants (Per 1,000 Population) 2012</a>
+      <a href="#">Full Service Restaurants (Per 1,000 Population) 2012</a>
+      <a href="#">Fast Food Expenditures (Per Capita) 2007</a>
+      <a href="#">Full Serive Restaruant Expenditures (Per Capita) 2007</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction12()">Stores</button>
+    <div class="dropdown-content" id="myDropdown12">
+      <a href="#">Grocery Stores (Per 1,000 Population) 2012</a>
+      <a href="#">Supercenters And Club Stores (Per 1,000 Population) 2012</a>
+      <a href="#">Convenience Stores (Per 1,000 Population) 2012</a>
+      <a href="#">Specialized Food Stores (Per 1,000 Population) 2012</a>
+      <a href="#">SNAP-Authorized Stores (Per 1,000 Population) 2012</a>
+      <a href="#">WIC-Authorized Stores (Per 1,000 Population) 2012</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction13()">Student Assistance</button>
+    <div class="dropdown-content" id="myDropdown13">
+      <a href="#">National School Lunch Program Participants 2014</a>
+      <a href="#">Students Eligible For Free Lunch 2010</a>
+      <a href="#">Students Eligible For Reduced-Price Lunch 2010</a>
+      <a href="#">School Breakfast Program Participants 2014</a>
+      <a href="#">Summer Food Service Program Participants 2014</a>
+    </div>
+  </div> 
+
+</div>
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction1() {
+    document.getElementById("myDropdown1").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown1 = document.getElementById("myDropdown1");
+      if (myDropdown1.classList.contains('show')) {
+        myDropdown1.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown2 = document.getElementById("myDropdown2");
+      if (myDropdown2.classList.contains('show')) {
+        myDropdown2.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction3() {
+    document.getElementById("myDropdown3").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown3 = document.getElementById("myDropdown3");
+      if (myDropdown3.classList.contains('show')) {
+        myDropdown3.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction4() {
+    document.getElementById("myDropdown4").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown4 = document.getElementById("myDropdown4");
+      if (myDropdown4.classList.contains('show')) {
+        myDropdown4.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction5() {
+    document.getElementById("myDropdown5").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown5 = document.getElementById("myDropdown5");
+      if (myDropdown5.classList.contains('show')) {
+        myDropdown5.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction6() {
+    document.getElementById("myDropdown6").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown6 = document.getElementById("myDropdown6");
+      if (myDropdown6.classList.contains('show')) {
+        myDropdown6.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction7() {
+    document.getElementById("myDropdown7").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown7 = document.getElementById("myDropdown7");
+      if (myDropdown7.classList.contains('show')) {
+        myDropdown7.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction8() {
+    document.getElementById("myDropdown8").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown8 = document.getElementById("myDropdown8");
+      if (myDropdown8.classList.contains('show')) {
+        myDropdown8.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction9() {
+    document.getElementById("myDropdown9").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown9 = document.getElementById("myDropdown9");
+      if (myDropdown9.classList.contains('show')) {
+        myDropdown9.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction10() {
+    document.getElementById("myDropdown10").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown10 = document.getElementById("myDropdown10");
+      if (myDropdown10.classList.contains('show')) {
+        myDropdown10.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction11() {
+    document.getElementById("myDropdown11").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown11 = document.getElementById("myDropdown11");
+      if (myDropdown11.classList.contains('show')) {
+        myDropdown11.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction12() {
+    document.getElementById("myDropdown12").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown12 = document.getElementById("myDropdown12");
+      if (myDropdown12.classList.contains('show')) {
+        myDropdown12.classList.remove('show');
+      }
+  }
+}
+}
+
+function myFunction13() {
+    document.getElementById("myDropdown13").classList.toggle("show");
+    window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown13 = document.getElementById("myDropdown13");
+      if (myDropdown13.classList.contains('show')) {
+        myDropdown13.classList.remove('show');
+      }
+  }
+}
+}
+
+</script>
+</body>
+<!--End DropDown Menu-->
+
 
 <!--Chord Diagram!-->
+<!--
 <p>
 <div id="chord-chart">
 
 </div>
 Chord Diagram
 </p>
-
+-->
 
 <!--"Bipartite"/Interactivity with Chord!-->
 <!--
