@@ -22,7 +22,7 @@ function MakeMap(variable)
     var svg = d3.select("#map"),
         width = +svg.attr("width"),
         height = +svg.attr("height");
-
+        
     var path = d3.geoPath();
 
     if (variable == "firstLoad")
