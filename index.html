@@ -15,16 +15,7 @@
 <h2>2015 USDA Food Environment Atlas</h2>
 
 
-<!-- Import all common libraries-->
-
-    <script src="js/d3/d3.js"></script>
-    <script src="js/d3/d3-scale-chromatic.v1.min.js"></script>
-    <script src="js/d3/topojson.v2.min.js"></script>
-
-
 <!--DropDown Menu-->
-
-<body>
 
 <div class="container">
 
@@ -104,7 +95,7 @@
     <div class="dropdown-content" id="myDropdown7">
       <a href="#map" onclick="MakeMap('PCT_DIABETES_ADULTS10')">Adult Diabetes 2010</a>
       <a href="#map" onclick="MakeMap('PCT_OBESE_ADULTS10')">Adult Obesity 2010</a>
-      <<a href="#map" onclick="MakeMap('PCT_OBESE_CHILD11')">Low Income Preschool Child Obesity 2009 - 2011</a>
+      <a href="#map" onclick="MakeMap('PCT_OBESE_CHILD11')">Low Income Preschool Child Obesity 2009 - 2011</a>
       <a href="#map" onclick="MakeMap('PCT_HSPA09')">High Schoolers Physically Active 2009</a>
       <a href="#map" onclick="MakeMap('RECFACPTH12')">Recreation And Fitness Facilities (Per 1,000 Population) 2012</a>
     </div>
@@ -211,9 +202,16 @@
 <div id="bps">
 	<p>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties.</p>
 	<div id="bipartite"> </div>
+  <div id="axisswitch"> </div>
 	<div id="scatterplot"> </div>
 </div>
 
+
+<!-- Import all common libraries-->
+
+<script src="js/d3/d3.js"></script>
+<script src="js/d3/d3-scale-chromatic.v1.min.js"></script>
+<script src="js/d3/topojson.v2.min.js"></script>
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/viz.v1.1.0.min.js"> </script>
 <script src="js/d3-tip.js"></script>

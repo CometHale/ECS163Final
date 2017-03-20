@@ -118,6 +118,10 @@ function drawbp(cat1="Access",cat2="Demographics") {
       bpkey2 = d.key;
     }
     if (bpkey1 != null && bpkey2 != null) {
+      $('html, body').animate({
+          scrollTop: $("#scatterplot").offset().top
+      }, 2000);
+
       if (scatterDrawn == false) {
         drawscatter(bpkey1, bpkey2);
         window.location.href="#scatterplot";
