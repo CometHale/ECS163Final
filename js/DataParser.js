@@ -22,7 +22,7 @@ var LoadData = function()
   d3.tsv("data/VariableKey.tsv", function(data) {
     data.forEach(function(d) {
     // console.log(d.Variable_description);
-      varKey[d.Variable_code] = d.Variable_description;
+        varKey[d.Variable_code] = [d.Variable_description, d.Category_Code];
     });
   });
   
