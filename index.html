@@ -12,11 +12,9 @@
 
 <body>
 
-<h2>2015 USDA Food Environment Atlas</h2>
+<h2>2015 USDA Food Enviormnet Atlas</h2>
 
 <!--Overall Map! and bar chart-->
-
-
 
 <!--
 COLORS:
@@ -24,7 +22,6 @@ Access: #5B2163
 Assistance: #1F255C
 Demographics: #BF7140
 Economic: #3F9D34
-Education: #FFDBB5
 Food Costs: #674822
 Health: #A13636
 Insecurity: #349D99
@@ -43,53 +40,54 @@ Student Assistance: #2E6D84
 <!--DropDown Menu-->
 
 <body>
+
+
 <div class="container">
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction1()">Access</button>
     <div class="dropdown-content" id="myDropdown1">
-      <a href="#">Population 2010</a>
-      <a href="#">Low Income 2010</a>
-      <a href="#">Children 2010</a>
-      <a href="#">Seniors 2010</a>
-      <a href="#">Household With No Car 2010</a>
+      <a href="#map" onclick="MakeMap('PCT_LACCESS_POP10')">Population 2010</a>
+      <a href="#map" onclick="MakeMap('PCT_LACCESS_LOWI10')">Low Income 2010</a>
+      <a href="#map" onclick="MakeMap('PCT_LACCESS_CHILD10')">Children 2010</a>
+      <a href="#map" onclick="MakeMap('PCT_LACCESS_SENIORS10')">Seniors 2010</a>
+      <a href="#map" onclick="MakeMap('PCT_LACCESS_HHNV10')">Household With No Car 2010</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction2()">Assistance</button>
     <div class="dropdown-content" id="myDropdown2">
-      <a href="#">SNAP Benefits Per Capita 2010</a>
-      <a href="#">WIC Redeptions Per Capita 2012</a>
-      <a href="#">SNAP Participants 2014</a>
-      <a href="#">SNAP Participants (Eligible) 2010</a>
-      <a href="#">WIC Participants 2014</a>
-      <a href="#">Child and Adult Care 2014</a>
+      <a href="#" onclick="MakeMap('PC_SNAPBEN10')">SNAP Benefits Per Capita 2010</a>
+      <a href="#" onclick="MakeMap('PC_WIC_REDEMP12')">WIC Redeptions Per Capita 2012</a>
+      <a href="#" onclick="MakeMap('PCT_SNAP14')">SNAP Participants 2014</a>
+      <a href="#" onclick="MakeMap('SNAP_PART_RATE10')">SNAP Participants (Eligible) 2010</a>
+      <a href="#" onclick="MakeMap('PCT_WIC14')">WIC Participants 2014</a>
+      <a href="#" onclick="MakeMap('PCT_CACFP14')">Child and Adult Care 2014</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction3()">Demographics</button>
     <div class="dropdown-content" id="myDropdown3">
-      <a href="#">White 2010</a>
-      <a href="#">Black 2010</a>
-      <a href="#">Hispanic 2010</a>
-      <a href="#">Asian 2010</a>
-      <a href="#">American Indian/Alaskan Native 2010</a>
-      <a href="#">Hawaiian/Pacific Islander 2010</a>
-      <a href="#">Population 65 or Older 2010</a>
-      <a href="#">Population 18 or Under 2010</a>
-     
+      <a href="#" onclick="MakeMap('PCT_NHWHITE10')">White 2010</a>
+      <a href="#" onclick="MakeMap('PCT_NHBLACK10')">Black 2010</a>
+      <a href="#" onclick="MakeMap('PCT_HISP10')">Hispanic 2010</a>
+      <a href="#" onclick="MakeMap('PCT_NHASIAN10')">Asian 2010</a>
+      <a href="#" onclick="MakeMap('PCT_NHNA10')">American Indian/Alaskan Native 2010</a>
+      <a href="#" onclick="MakeMap('PCT_NHPI10')">Hawaiian/Pacific Islander 2010</a>
+      <a href="#" onclick="MakeMap('PCT_65OLDER10')">Population 65 or Older 2010</a>
+      <a href="#" onclick="MakeMap('PCT_18YOUNGER10')">Population 18 or Under 2010</a>
     </div>
   </div> 
-
+<!--Will Do The Rest Once Map Works-->
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction4()">Economics</button>
     <div class="dropdown-content" id="myDropdown4">
-     <a href="#">Median Household Income 2010</a>
-      <a href="#">Poverty Rate 2010</a>
-      <a href="#">Child Poverty Rate 2010</a>
-      <a href="#">Unemployment Rate 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Median Household Income 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Poverty Rate 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Child Poverty Rate 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Unemployment Rate 2012</a>
       
     </div>
   </div> 
@@ -97,115 +95,120 @@ Student Assistance: #2E6D84
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction5()">Education</button>
     <div class="dropdown-content" id="myDropdown5">
-      <a href="#">Adults Less Than A High School Diploma</a>
-      <a href="#">Adults With A High School Diploma Only</a>
-      <a href="#">Adults With Some College Or Associate's Degree</a>
-      <a href="#">Adults With A Bachelors Degree Or Higher</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adults Less Than A High School Diploma</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adults With A High School Diploma Only</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adults With Some College Or Associate's Degree</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adults With A Bachelors Degree Or Higher</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction6()">Food Costs</button>
     <div class="dropdown-content" id="myDropdown6">
-      <a href="#">Price Of Low-Fat Milk (National Average) 2010</a>
-      <a href="#">Price Of Soda (National Average) 2010</a>
-      <a href="#">Price Of Low-Fat Milk/Price Of Soda 2010</a>
-       <a href="#">Soda Tax Sales In Stores 2011</a>
-      <a href="#">Soda Tax Sales On Vending 2011</a>
-      <a href="#">Chip And Pretzel Sales Tax In Sores 2011</a>
-      <a href="#">Chip and Pretzel Sales Tax On Vending 2011</a>
-      <a href="#">General Food Sales Tax in Stores 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Price Of Low-Fat Milk (National Average) 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Price Of Soda (National Average) 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Price Of Low-Fat Milk/Price Of Soda 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Soda Tax Sales In Stores 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Soda Tax Sales On Vending 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Chip And Pretzel Sales Tax In Sores 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Chip and Pretzel Sales Tax On Vending 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">General Food Sales Tax in Stores 2011</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction7()">Health</button>
     <div class="dropdown-content" id="myDropdown7">
-      <a href="#">Adult Diabetes 2010</a>
-      <a href="#">Adult Obesity 2010</a>
-      <a href="#">Child Obesity 2011</a>
-      <a href="#">High Schoolers Physically Active 2009</a>
-      <a href="#">Recreation And Fitness Facilities (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adult Diabetes 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Adult Obesity 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Child Obesity 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">High Schoolers Physically Active 2009</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Recreation And Fitness Facilities (Per 1,000 Population) 2012</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction8()">Insecurity</button>
     <div class="dropdown-content" id="myDropdown8">
-      <a href="#">Household Food Insecurity (Three Year Average) 2010 - 2012</a>
-      <a href="#">Household Very Low Food Security (Three Year Average) 2010 - 2012</a>
-      <a href="#">Child Very Low Food Security (Multiple Year Average) 2002 - 2012</a>
-      <a href="#">Child Food Insecurity (Multiple Year Average) 2003 - 2011</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Household Food Insecurity (Three Year Average) 2010 - 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Household Very Low Food Security (Three Year Average) 2010 - 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Child Very Low Food Security (Multiple Year Average) 2002 - 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Child Food Insecurity (Multiple Year Average) 2003 - 2011</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction9()">Local Food Access</button>
     <div class="dropdown-content" id="myDropdown9">
-      <a href="#">Farmers' Markets (Per 1,000 Population) 2013</a>
-      <a href="#">Farmers' Markets Accepting SNAP 2013</a>
-      <a href="#">Farmers' Markets Accepting WIC 2013</a>
-      <a href="#">Farmers' Markets Accepting WIC Cash 2013/a>
-      <a href="#">Farmers' Markets Accepting SFMNP 2013</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets (Per 1,000 Population) 2013</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting SNAP 2013</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting WIC 2013</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting WIC Cash 2013/a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting SFMNP 2013</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction10()">Local Food Population</button>
     <div class="dropdown-content" id="myDropdown10">
-      <a href="#">Vegetable Acres Harvested (Per 1,000 Population) 2007</a>
-      <a href="#">Vegetable Acres Harvested For Fresh Market (Per 1,000 Population) 2007</a>
-      <a href="#">Orchard Acres (Per 1,000 Population) 2007 </a>
-      <a href="#">Berry Acres (Per 1,000 Population) 2007</a>
-      <a href="#">Direct Farm Sales (Per Capita) 2007</a>
-      <a href="#">Agritourism Income 2007</a>
-      <a href="#">Greenhouse Vegetable And Fresh Herb Sq. Feet (Per 1,000 Population) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Vegetable Acres Harvested (Per 1,000 Population) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Vegetable Acres Harvested For Fresh Market (Per 1,000 Population) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Orchard Acres (Per 1,000 Population) 2007 </a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Berry Acres (Per 1,000 Population) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Direct Farm Sales (Per Capita) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Agritourism Income 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Greenhouse Vegetable And Fresh Herb Sq. Feet (Per 1,000 Population) 2007</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction11()">Restaurants</button>
     <div class="dropdown-content" id="myDropdown11">
-      <a href="#">Fast Food Restaurants (Per 1,000 Population) 2012</a>
-      <a href="#">Full Service Restaurants (Per 1,000 Population) 2012</a>
-      <a href="#">Fast Food Expenditures (Per Capita) 2007</a>
-      <a href="#">Full Serive Restaruant Expenditures (Per Capita) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Fast Food Restaurants (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Full Service Restaurants (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Fast Food Expenditures (Per Capita) 2007</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Full Serive Restaruant Expenditures (Per Capita) 2007</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction12()">Stores</button>
     <div class="dropdown-content" id="myDropdown12">
-      <a href="#">Grocery Stores (Per 1,000 Population) 2012</a>
-      <a href="#">Supercenters And Club Stores (Per 1,000 Population) 2012</a>
-      <a href="#">Convenience Stores (Per 1,000 Population) 2012</a>
-      <a href="#">Specialized Food Stores (Per 1,000 Population) 2012</a>
-      <a href="#">SNAP-Authorized Stores (Per 1,000 Population) 2012</a>
-      <a href="#">WIC-Authorized Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Grocery Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Supercenters And Club Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Convenience Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Specialized Food Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">SNAP-Authorized Stores (Per 1,000 Population) 2012</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">WIC-Authorized Stores (Per 1,000 Population) 2012</a>
     </div>
   </div> 
 
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction13()">Student Assistance</button>
     <div class="dropdown-content" id="myDropdown13">
-      <a href="#">National School Lunch Program Participants 2014</a>
-      <a href="#">Students Eligible For Free Lunch 2010</a>
-      <a href="#">Students Eligible For Reduced-Price Lunch 2010</a>
-      <a href="#">School Breakfast Program Participants 2014</a>
-      <a href="#">Summer Food Service Program Participants 2014</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">National School Lunch Program Participants 2014</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Students Eligible For Free Lunch 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Students Eligible For Reduced-Price Lunch 2010</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">School Breakfast Program Participants 2014</a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Summer Food Service Program Participants 2014</a>
     </div>
   </div> 
 
 </div>
+
 <!--End DropDown Menu-->
 
 
 <!--Chord Diagram!-->
 
 <p>
+<div id="chord-chart">
+
+</div>
 Chord Diagram
 </p>
-<div id="chord-chart"></div>
+
+
 <!--"Bipartite"/Interactivity with Chord!-->
 
 <p>
@@ -214,16 +217,15 @@ Chord Diagram
 <div id="scatterplot"> </div>
 </p>
 <script src="./js/d3/d3.min.js"></script>
-<script src="./js/jquery-3.2.0.min.js"></script>
 <script src="http://vizjs.org/viz.v1.1.0.min.js"> </script>
 <script src="./js/d3-tip.js"></script>
 <script src="./js/palette.js"></script>
+<script src="./js/map.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/population_parser.js"></script>
 <script src="./js/correlation_parser.js"></script>
 <script src="./js/scatterplot.js"></script>
 <script src="./js/bipartite.js"></script>
-<script src="./js/chord.js"></script>
 <script src="./js/DataParser.js"></script>
 </body>
 </html>
