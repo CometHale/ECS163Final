@@ -4,7 +4,8 @@ var category_correlations = {} // correlations calculated based on the summed ab
 var category_avg_correls = {}	//averaged category_correlations
 var category_correls = {}
 
-var correlation_csv = "../data/corr.csv"
+loadCorrParser = function() {
+	correlation_csv = "data/corr.csv"
 
 var loadCorrParser = function(){
 

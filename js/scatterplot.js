@@ -49,7 +49,6 @@ function drawscatter(var1, var2) {
     .direction("n")
     .offset([0, 0])
     .html(function(d) {
-      console.log(d);
       return populationByCounty[d.FIPS][1] + ", " + populationByCounty[d.FIPS][0];}); //curr_data is the year we're looking at
 
   //invoke tip library
