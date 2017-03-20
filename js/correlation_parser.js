@@ -3,9 +3,7 @@ var correlation_dict = {} // correlations for the variables
 var category_correlations = {} // correlations calculated based on the summed absolute values of the variable correlations
 var category_avg_correls = {}	//averaged category_correlations
 var category_correls = {}
-
-loadCorrParser = function() {
-	correlation_csv = "data/corr.csv"
+var correlation_csv = "../data/corr.csv"
 
 var loadCorrParser = function(){
 
