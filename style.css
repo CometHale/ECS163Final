@@ -121,10 +121,20 @@ h2{
 .show {
     display: block;
 }
-/*div#chord-chart {
 
-  }*/
+#chord-chart {
+	width:1200px;
+	height: 1200px;
+	margin-left:100px;
+}
 
+text.group-label {
+	word-wrap:break-word;
+}
+
+path.fade{
+	display: none;
+}
   /*for bipartite clicking*/
 .currentbp {
     stroke-width: 10px;

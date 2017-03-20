@@ -1,13 +1,11 @@
 
 var loadChord = function(){
 
-
-
 	//Setting up the matrix	
 	var chord_matrix = []
 	var variable_array = []
 	var category_var_array = {}
-	var category_color = ["#5B2163","#1F255C","#BF7140","#3F9D34","#674822","#A13636","#349D99","#C95EAD","#8C81D5","#87D47D","#C0CC66","#2E6D84"]
+	var category_color = ["#5B2163","#1F255C","#BF7140","#3F9D34","#674822","#FFDBB5","#A13636","#349D99","#C95EAD","#8C81D5","#87D47D","#C0CC66","#2E6D84"]
 
 // Access: #5B2163
 // Assistance: #1F255C
@@ -22,51 +20,65 @@ var loadChord = function(){
 // Stores: #C0CC66
 // Student Assistance: #2E6D84
 
-	for(cat in categoryObject){
-		var set_array = Array.from(categoryObject[cat])
+	// for(cat in categoryObject){
+	// 	var set_array = Array.from(categoryObject[cat])
 
-		if(!(cat in category_var_array)){
-			category_var_array[cat] = []
+	// 	if(!(cat in category_var_array)){
+	// 		category_var_array[cat] = []
+	// 	}
+
+	// 	for(collection in set_array){
+	// 		var cur_var = set_array[collection]
+
+	// 		category_var_array[cat].push(cur_var)
+	// 		if(variable_array.indexOf(cur_var) == -1){
+	// 			variable_array.push(cur_var)
+	// 		}
+
+	// 		var cur_var_id = variable_array.indexOf(cur_var)
+	// 		chord_matrix[cur_var_id] = []
+	// 	}
+
+	// }
+
+	// for(cur_id in variable_array){
+	// 	var cur_var = variable_array[cur_id]
+	// 	for(correl_var in correlation_dict[cur_var]){
+	// 		var correl_var_id = variable_array.indexOf(correl_var)
+	// 		var cor_val = correlation_dict[cur_var][correl_var]
+
+	// 		if(cor_val < 0){
+	// 			cor_val = cor_val * -1 
+	// 		}
+
+	// 		cor_val =  100 % cor_val
+	// 		chord_matrix[cur_id][correl_var_id] = cor_val
+	// 	}
+	// }
+
+	var cat_index = 0
+
+	for(category in category_correls){
+		chord_matrix[cat_index] = []
+		var sub_cat_index = 0
+		for(sub_category in category_avg_correls[category]){
+			chord_matrix[cat_index][sub_cat_index] = category_avg_correls[category][sub_category]
+			sub_cat_index += 1
 		}
-
-		for(collection in set_array){
-			var cur_var = set_array[collection]
-
-			category_var_array[cat].push(cur_var)
-			if(variable_array.indexOf(cur_var) == -1){
-				variable_array.push(cur_var)
-			}
-
-			var cur_var_id = variable_array.indexOf(cur_var)
-			chord_matrix[cur_var_id] = []
-		}
-
+		cat_index += 1
 	}
 
-	for(cur_id in variable_array){
-		var cur_var = variable_array[cur_id]
-		for(correl_var in correlation_dict[cur_var]){
-			var correl_var_id = variable_array.indexOf(correl_var)
-			var cor_val = correlation_dict[cur_var][correl_var]
 
-			if(cor_val < 0){
-				cor_val = cor_val * -1 
-			}
-
-			cor_val =  100 % cor_val
-			chord_matrix[cur_id][correl_var_id] = cor_val
-		}
-	}
-
-	var chord_width = 1200,
-		chord_height = 1200,
+	var chord_width = 900,
+		chord_height = 900,
 		chord_matrix_dim = CategoryNames.length,
 		outerRadius = Math.min(chord_width, chord_height) * 0.5 - 40,
 		innerRadius = outerRadius - 30;
 
+	var w = 980, h = 800, r1 = h / 2, r0 = r1 - 100;
 	var chord_svg = d3.select("#chord-chart").append("svg")
-						.attr("width",chord_width)
-						.attr("height",chord_height);
+						.attr("width",chord_width + 300)
+						.attr("height",chord_height + 300);
 
 	var formatValue = d3.formatPrefix(",.0", 1e3);
 
@@ -86,7 +98,7 @@ var loadChord = function(){
 	    .range(category_color);
 
 	var g = chord_svg.append("g")
-	    .attr("transform", "translate(" + chord_width / 2 + "," + chord_height / 2 + ")")
+	    .attr("transform", "translate(" + (chord_width + 300) / 2 + "," + (chord_height + 300) / 2 + ")")
 	    .datum(chord(chord_matrix));
 
 	var group = g.append("g")
@@ -97,53 +109,92 @@ var loadChord = function(){
 
 	group.append("path")
 	    .style("fill", function(d) { 
-	    	var index = 0
-	    	for(categ in category_var_array){
-	    		var variable = variable_array[d.index]
+	    	// var index = 0
+	    	// for(categ in category_var_array){
+	    	// 	var variable = variable_array[d.index]
 
-	    		if(category_var_array[categ].indexOf(variable) > - 1){
-	    			console.log("")
-	    			break
-	    		}
-	    		index += 1;	
-	    	}
-	    	return color(index); 
+	    	// 	if(category_var_array[categ].indexOf(variable) > - 1){
+	    	// 		break;
+	    	// 	}
+	    	// 	index += 1;	
+	    	// }
+	    	return color(d.index); 
 	    })
 	    .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
 	    .attr("d", arc);
+	 	
+	var groupText = group.append("text")
+		.each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+   		.attr("class","group-label")
+   		.attr("id", function(d){
+   			return "group-label-" + CategoryNames[d.index];
+   		})
+		.attr("x", 6)
+		.attr("dy", 15)
+        .attr("fill", "black")
+        .style("font-size", "20px")
+        .attr("transform", function(d) {
+              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                  + "translate(" + (r0 + 300 - (d.angle > Math.PI ? 0 : 180) - (CategoryNames[d.index].length <= 10? CategoryNames[d.index].length:0)) +")"
+                  + (d.angle > Math.PI ? "rotate(180)" : "");
+            })
+        .text(function(d, i) { 
+        	var label = CategoryNames[d.index]
+        	return label; 
+        });
+	
+	var health_label = $("#group-label-Health").attr("transform", "rotate(105)translate(500,50)rotate(180)")
 
-	var groupTick = group.selectAll(".group-tick")
-	  .data(function(d) { return groupTicks(d, 1e3); })
-	  .enter().append("g")
-	    .attr("class", "group-tick");
-	    // .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + outerRadius + ",0)"; });
+	var insecurity_label = $("#group-label-Insecurity").attr("transform", "rotate(133)translate(520,50)rotate(180)")
 
-	groupTick.append("line")
-	    .attr("x2", 6);
+	var restaurants_label = $("#group-label-Restaurants").attr("transform", "rotate(183)translate(525,50)rotate(185)")
 
-	groupTick
-	  .filter(function(d) { return d.value % 5e3 === 0; })
-	  .append("text")
-	    .attr("x", 8)
-	    .attr("dy", ".35em")
-	    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
-	    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-	    .text(function(d) { return formatValue(d.value); });
+	var stores_label = $("#group-label-Stores").attr("transform", "rotate(210)translate(480,50)rotate(185)")
+
+	var sa_label = $("#group-label-StudentAssistance").attr("transform", "rotate(245)translate(570,50)rotate(185)")
 
 	g.append("g")
 	    .attr("class", "ribbons")
 	  .selectAll("path")
 	  .data(function(chords) { return chords; })
 	  .enter().append("path")
+	  	.attr("class","chord-path")
+	  	.attr("id", function(d,i){
+	  		return "path-" + i
+	  	})
 	    .attr("d", ribbon)
+	   	.on("mouseover", mouseover)
+	   	.on("mouseout", mouseout)
+	   	.on("click",ribbonclick)
 	    .style("fill", function(d) { return color(d.target.index); })
 	    .style("stroke", function(d) { return d3.rgb(color(d.target.index)).darker(); });
 
-	// Returns an array of tick angles and values for a given group and step.
-	function groupTicks(d, step) {
-	  var k = (d.endAngle - d.startAngle);
-	  return d3.range(0, d.value, step).map(function(value) {
-	    return {value: value, angle: value * k + d.startAngle};
-	  });
-	}
+	
+	function mouseover(d, i) {
+
+		var selected_path = $("#path-" + i)
+
+		$(".chord-path").each(function(path){
+        	var path_obj = $("#path-" + path)
+        	path_obj.addClass("fade");
+        });
+        selected_path.removeClass("fade");
+
+    }
+
+    function mouseout(d, i) {
+
+        $(".chord-path").each(function(path){
+        	var path_obj = $("#path-" + path)
+        	path_obj.removeClass("fade");
+        });
+        // .removeClass("fade");
+    }
+
+    function ribbonclick(d, i) {
+    	var cat_1 = CategoryNames[d.source.index];
+    	var cat_2 = CategoryNames[d.target.index];
+    	bp_update(cat_1,cat_2);
+    }
+
 }

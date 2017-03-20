@@ -66,6 +66,7 @@ LoadData();
 loadCorrParser();
 d3.json("data/us-10m.v1.json", function(usGeo) {
 drawbp();
+loadChord();
   // console.log(dataObject);
   // console.log(categoryObject);
   // console.log(dataObject["PCT_WIC14"]);

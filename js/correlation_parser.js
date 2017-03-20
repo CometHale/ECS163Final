@@ -1,13 +1,15 @@
 
 var correlation_dict = {} // correlations for the variables
-var category_correlations = {} // correlations calculated based on the averaged absolute values of the variable correlations
-var cat_var_dict = {}
+var category_correlations = {} // correlations calculated based on the summed absolute values of the variable correlations
+var category_avg_correls = {}	//averaged category_correlations
+var category_correls = {}
 
-loadCorrParser = function() {
-	correlation_csv = "../data/corr.csv"
+var correlation_csv = "../data/corr.csv"
+
+var loadCorrParser = function(){
 
 	d3.csv(correlation_csv,function(corr_data){
-
+		var cat_var_dict = {}
 		corr_data.forEach(function(cd){
 			cur_row = null
 			cur_key = null
@@ -23,8 +25,14 @@ loadCorrParser = function() {
 
 					cur_key = key
 					var same_cat = false //tracks whether or not curkey and cur_row are in the same category
-					for(cat in categoryObject){
-						var set_array = Array.from(categoryObject[cat])
+					for(catego in categoryObject){
+						var set_array = Array.from(categoryObject[catego])
+						cat_var_dict[catego] = []
+						category_correlations[catego] = {}
+						for(collection in set_array){
+							var cur_var = set_array[collection]
+							cat_var_dict[catego].push(cur_var)
+						}
 
 						if(set_array.indexOf(cur_key) > -1){
 							if(set_array.indexOf(cur_row) > - 1){
@@ -52,50 +60,63 @@ loadCorrParser = function() {
 			}
 		});
 		
-		for(catego in categoryObject){
-			var array = Array.from(categoryObject[catego])
-			cat_var_dict[catego] = []
-			category_correlations[catego] = {}
-			for(collection in array){
-				var cur_var = array[collection]
-				cat_var_dict[catego].push(cur_var)
-			}
 
-		}
+		//adds up the variable correlations for each variable pair
+		for(correla in correlation_dict){
+			for(cate in cat_var_dict){
+				if(cat_var_dict[cate].indexOf(correla) > -1){
 
-		
-	});
-	
-	calcCategoryCorrelations();
-	
-}
+					for(sub_key in correlation_dict[correla]){
 
-calcCategoryCorrelations = function(){
+						if(!(sub_key in category_correlations[cate])){
+							category_correlations[cate][sub_key] = 0
+						}
 
-	for(correla in correlation_dict){
-		console.log(correla)
-		for(cate in cat_var_dict){
-			
-			if(cat_var_dict[cate].indexOf(correla) > -1){
+						var corr = parseFloat(correlation_dict[correla][sub_key])
 
-				for(sub_key in correlation_dict[correla]){
-
-					if(!(sub_key in category_correlations[cate])){
-						category_correlations[cate][sub_key] = 0
+						if(corr < 0 ){
+							corr = corr * -1
+						}
+						category_correlations[cate][sub_key] += corr
 					}
-					category_correlations[cate][sub_key] += category_correlations[cate][sub_key]
-					console.log("here")
 				}
+
 			}
-
 		}
-	}
 
-	d3.json("../data/us-10m.v1.json", function(usGeo) {
-	  loadChord();
-	});
+		//add up the correlations within each category
 
-	
+		for(current_cat in cat_var_dict){
+			category_avg_correls[current_cat] = {}
+
+			for(sub_cate in category_correlations){
+				var sub_cat_vars = cat_var_dict[sub_cate]
+				for(variable in category_correlations[current_cat]){
+
+					if(!(sub_cate in category_avg_correls[current_cat])){
+						category_avg_correls[current_cat][sub_cate] = 0 
+					}
+					
+					if(sub_cat_vars.indexOf(variable) > -1){
+						category_avg_correls[current_cat][sub_cate] += category_correlations[current_cat][variable]
+					}	
+
+				}
+				
+			
+			
+			}
+		}
+
+		//average the totals
+		for(category in category_avg_correls){
+			category_correls[category] = {}
+			for(sub_category in category_avg_correls[category]){
+				var sub_cat_vars = cat_var_dict[sub_category]
+				category_correls[category][sub_category] = category_avg_correls[category][sub_category] / ((71 - sub_cat_vars.length) * sub_cat_vars.length)
+			}
+		}
+		console.log(category_correls)
+	})
+
 }
-
-loadCorrParser();
