@@ -72,10 +72,10 @@ var loadChord = function(){
 		.attr("x", 6)
 		.attr("dy", 15)
         .attr("fill", "black")
-        .style("font-size", "20px")
+        .style("font-size", "14px")
         .attr("transform", function(d) {
               return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-                  + "translate(" + (r0 +200 - (d.angle > Math.PI ? 0 : 180) - (CategoryNames[d.index].length <= 10? CategoryNames[d.index].length:0)) +")"
+                  + "translate(" + (r0 +205 - (d.angle > Math.PI ? 0 : 180) - (CategoryNames[d.index].length <= 10? CategoryNames[d.index].length:0)) +")"
                   + (d.angle > Math.PI ? "rotate(180)" : "");
             })
         .text(function(d, i) { 
