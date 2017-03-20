@@ -9,7 +9,6 @@ function drawbp() {
   var bp_g = bp_svg.append("g")
     .attr("transform", "translate(300,50)");
 
-console.log("whaaaat", populationByCounty);
   //tooltip
   var bp_tooltip = d3.tip()
     .attr("class", "tooltip")
@@ -126,7 +125,7 @@ console.log("whaaaat", populationByCounty);
         scatterDrawn = true;
       }
       else {
-        //update scatter
+        update_sp(bpkey1, bpkey2);
         window.location.href="#scatterplot";
       }      
       //send to scatterplot.js :)

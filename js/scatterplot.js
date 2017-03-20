@@ -24,7 +24,6 @@ function drawscatter(var1, var2) {
       sp_data.push(row);
     }
   }
-
   //ranges on axises\
   var sp_x = d3.scaleLinear() 
     .range([0, sp_width])
@@ -32,14 +31,16 @@ function drawscatter(var1, var2) {
     
   var sp_y = d3.scaleLinear() //money
     .range([sp_height, 0])
-    .domain([0, y_data.get("max") + 1]);
+    .domain([0, y_data.get("max") + 10]);
 
   //setting up svgs/g
   var sp_svg = d3.select("#scatterplot").append("svg")
+    .attr("class", "spsvg")
     .attr("width", sp_width + sp_margin.left + sp_margin.right)
-    .attr("height", sp_height + sp_margin.top + sp_margin.bottom)
+    .attr("height", sp_height + sp_margin.top + sp_margin.bottom);
 
   var sp_g = sp_svg.append("g")
+    .attr("class", "spg")
     .attr("transform", "translate(" + sp_margin.left + "," + sp_margin.top + ")");  
 
    //tooltip
@@ -56,31 +57,31 @@ function drawscatter(var1, var2) {
 
    //draw axis
   sp_g.append("g")
-      .attr("class", "axis")
+      .attr("class", "spaxis")
       .attr("transform", "translate(0, " + sp_height + ")")
-      .call(d3.axisBottom(sp_x))
-
+      .call(d3.axisBottom(sp_x));
+   
   sp_g.append("text")
-    .attr("x", sp_width / 2 - sp_margin.right - sp_margin.left)
-    .attr("y", sp_height - sp_margin.top + 50)
-    .attr("fill", "#000")
-    .attr("font-size", 11)
-    .attr("font-weight", "bold")
-    .attr("text-anchor", "start")
-    .attr("font-family", "Cinzel")
-    .text(var1);
+      .attr("x", sp_width / 2 - sp_margin.right - sp_margin.left)
+      .attr("y", sp_height - sp_margin.top + 50)
+      .attr("fill", "#000")
+      .attr("font-size", 11)
+      .attr("font-weight", "bold")
+      .attr("text-anchor", "start")
+      .attr("font-family", "Cinzel")
+      .text(varKey[var1]);
 
   //y-axis
   sp_g.append("g")
-      .attr("class", "axis")  
+      .attr("class", "spaxis")  
       .call(d3.axisLeft(sp_y))
     .append("text")
-      .attr("x", 50)
-      .attr("y", -5)
+      .attr("x", 200)
+      .attr("y", -10)
       .attr("fill", "#000")
       .attr("font-weight", "bold")
       .attr("font-family", "Cinzel")
-      .text(var2);
+      .text(varKey[var2]);
   
   sp_g.selectAll(".dot")
       .data(sp_data)
@@ -92,4 +93,9 @@ function drawscatter(var1, var2) {
       .attr("fill", "#5B2163")
       .on("mouseover", sp_tooltip.show)
       .on("mouseout", sp_tooltip.hide);
+}
+
+function update_sp(var1, var2) {
+  d3.select(".spsvg").remove();
+  drawscatter(var1,var2);
 }
