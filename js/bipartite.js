@@ -1,4 +1,4 @@
-function drawbp(cat1,cat2) {
+function drawbp(cat1="Access",cat2="Demographics") {
   var scatterDrawn = false;
 
   var bp_svg = d3.select("#bipartite")
