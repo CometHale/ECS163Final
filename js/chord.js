@@ -1,4 +1,3 @@
-
 var loadChord = function(){
 
 	//Setting up the matrix	
@@ -6,56 +5,6 @@ var loadChord = function(){
 	var variable_array = []
 	var category_var_array = {}
 	var category_color = ["#5B2163","#1F255C","#BF7140","#3F9D34","#674822","#FFDBB5","#A13636","#349D99","#C95EAD","#8C81D5","#87D47D","#C0CC66","#2E6D84"]
-
-// Access: #5B2163
-// Assistance: #1F255C
-// Demographics: #BF7140
-// Economic: #3F9D34
-// Food Costs: #674822
-// Health: #A13636
-// Insecurity: #349D99
-// Local Food Access: #C95EAD
-// Local Food Production: #8C81D5
-// Restaurants: #87D47D
-// Stores: #C0CC66
-// Student Assistance: #2E6D84
-
-	// for(cat in categoryObject){
-	// 	var set_array = Array.from(categoryObject[cat])
-
-	// 	if(!(cat in category_var_array)){
-	// 		category_var_array[cat] = []
-	// 	}
-
-	// 	for(collection in set_array){
-	// 		var cur_var = set_array[collection]
-
-	// 		category_var_array[cat].push(cur_var)
-	// 		if(variable_array.indexOf(cur_var) == -1){
-	// 			variable_array.push(cur_var)
-	// 		}
-
-	// 		var cur_var_id = variable_array.indexOf(cur_var)
-	// 		chord_matrix[cur_var_id] = []
-	// 	}
-
-	// }
-
-	// for(cur_id in variable_array){
-	// 	var cur_var = variable_array[cur_id]
-	// 	for(correl_var in correlation_dict[cur_var]){
-	// 		var correl_var_id = variable_array.indexOf(correl_var)
-	// 		var cor_val = correlation_dict[cur_var][correl_var]
-
-	// 		if(cor_val < 0){
-	// 			cor_val = cor_val * -1 
-	// 		}
-
-	// 		cor_val =  100 % cor_val
-	// 		chord_matrix[cur_id][correl_var_id] = cor_val
-	// 	}
-	// }
-
 	var cat_index = 0
 
 	for(category in category_correls){
@@ -69,8 +18,8 @@ var loadChord = function(){
 	}
 
 
-	var chord_width = 900,
-		chord_height = 900,
+	var chord_width = 700,
+		chord_height = 700,
 		chord_matrix_dim = CategoryNames.length,
 		outerRadius = Math.min(chord_width, chord_height) * 0.5 - 40,
 		innerRadius = outerRadius - 30;
@@ -109,15 +58,6 @@ var loadChord = function(){
 
 	group.append("path")
 	    .style("fill", function(d) { 
-	    	// var index = 0
-	    	// for(categ in category_var_array){
-	    	// 	var variable = variable_array[d.index]
-
-	    	// 	if(category_var_array[categ].indexOf(variable) > - 1){
-	    	// 		break;
-	    	// 	}
-	    	// 	index += 1;	
-	    	// }
 	    	return color(d.index); 
 	    })
 	    .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
@@ -135,7 +75,7 @@ var loadChord = function(){
         .style("font-size", "20px")
         .attr("transform", function(d) {
               return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-                  + "translate(" + (r0 + 300 - (d.angle > Math.PI ? 0 : 180) - (CategoryNames[d.index].length <= 10? CategoryNames[d.index].length:0)) +")"
+                  + "translate(" + (r0 +200 - (d.angle > Math.PI ? 0 : 180) - (CategoryNames[d.index].length <= 10? CategoryNames[d.index].length:0)) +")"
                   + (d.angle > Math.PI ? "rotate(180)" : "");
             })
         .text(function(d, i) { 
@@ -143,15 +83,15 @@ var loadChord = function(){
         	return label; 
         });
 	
-	var health_label = $("#group-label-Health").attr("transform", "rotate(105)translate(500,50)rotate(180)")
+	var health_label = $("#group-label-Health").attr("transform", "rotate(105)translate(400,50)rotate(180)")
 
-	var insecurity_label = $("#group-label-Insecurity").attr("transform", "rotate(133)translate(520,50)rotate(180)")
+	var insecurity_label = $("#group-label-Insecurity").attr("transform", "rotate(133)translate(420,50)rotate(180)")
 
-	var restaurants_label = $("#group-label-Restaurants").attr("transform", "rotate(183)translate(525,50)rotate(185)")
+	var restaurants_label = $("#group-label-Restaurants").attr("transform", "rotate(183)translate(425,50)rotate(185)")
 
-	var stores_label = $("#group-label-Stores").attr("transform", "rotate(210)translate(480,50)rotate(185)")
+	var stores_label = $("#group-label-Stores").attr("transform", "rotate(210)translate(380,50)rotate(185)")
 
-	var sa_label = $("#group-label-StudentAssistance").attr("transform", "rotate(245)translate(570,50)rotate(185)")
+	var sa_label = $("#group-label-StudentAssistance").attr("transform", "rotate(245)translate(470,50)rotate(185)")
 
 	g.append("g")
 	    .attr("class", "ribbons")
@@ -188,7 +128,7 @@ var loadChord = function(){
         	var path_obj = $("#path-" + path)
         	path_obj.removeClass("fade");
         });
-        // .removeClass("fade");
+  
     }
 
     function ribbonclick(d, i) {

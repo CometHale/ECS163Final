@@ -76,8 +76,14 @@ d3.json("data/us-10m.v1.json", function(usGeo) {
 
   d3.csv("data/Access.csv", function(){
     drawbp();
-    loadChord();
+
+    d3.csv("data/Insecurity.csv",function(){
+      loadChord();
+    });
+    
   });
+
+
 });
 
 

@@ -1,3 +1,5 @@
+var bp = viz.bP();
+
 function drawbp() {
   var scatterDrawn = false;
 
@@ -132,6 +134,7 @@ function drawbp() {
     }
     
   }
+
 }
 
 function bp_update(cat1, cat2) {
