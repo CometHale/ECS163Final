@@ -1,5 +1,3 @@
-var bp = viz.bP();
-
 function drawbp() {
   var scatterDrawn = false;
 
@@ -138,6 +136,7 @@ function drawbp() {
 }
 
 function bp_update(cat1, cat2) {
+
   categories1 = Array.from(categoryObject[cat1]);
   categories2 = Array.from(categoryObject[cat2]);
 
@@ -163,6 +162,14 @@ function bp_update(cat1, cat2) {
     }
   }
   
+  bp = viz.bP()
+    .data(bpdata)
+    .min(20)
+    .pad(10)
+    .height(600)
+    .width(500)
+    .barSize(30)
+    .fill(d=>bpcolors[d.primary]);
 
   //make random colors
   bpcolors = {};
