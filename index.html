@@ -12,35 +12,19 @@
 
 <body>
 
-<h2>2015 USDA Food Enviormnet Atlas</h2>
+<h2>2015 USDA Food Environment Atlas</h2>
 
-<!--Overall Map! and bar chart-->
 
-<!--
-COLORS:
-Access: #5B2163
-Assistance: #1F255C
-Demographics: #BF7140
-Economic: #3F9D34
-Food Costs: #674822
-Health: #A13636
-Insecurity: #349D99
-Local Food Access: #C95EAD
-Local Food Production: #8C81D5
-Restaurants: #87D47D
-Stores: #C0CC66
-Student Assistance: #2E6D84
--->
+<!-- Import all common libraries-->
 
-<div id =  "map-and-bar">
-	<div id = "map"></div>
-	<div id = "bars"></div>
-</div>
+    <script src="js/d3/d3.js"></script>
+    <script src="js/d3/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/d3/topojson.v2.min.js"></script>
+
 
 <!--DropDown Menu-->
 
 <body>
-
 
 <div class="container">
 
@@ -143,7 +127,7 @@ Student Assistance: #2E6D84
       <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets (Per 1,000 Population) 2013</a>
       <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting SNAP 2013</a>
       <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting WIC 2013</a>
-      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting WIC Cash 2013/a>
+      <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting WIC Cash 2013</a>
       <a href="#" onclick="MakeMap('PCT_LACCESS_POP10')">Farmers' Markets Accepting SFMNP 2013</a>
     </div>
   </div> 
@@ -199,16 +183,29 @@ Student Assistance: #2E6D84
 <!--End DropDown Menu-->
 
 
+<!--Overall Map! and bar chart-->
+<div id =  "map-and-bar">
+	<div id = "mapPart">
+    <svg id = "map" width="960" height="600"></svg>
+     <!--!-->
+	</div>
+	<div id = "barpart">
+    <svg id = "bars" width="960" height="200"></svg>
+	</div>
+</div>
+
+    <script src ="js/DataParser.js"></script>
+    <script src ="js/population_parser.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/bars.js"></script>
+
+
 <!--Chord Diagram!-->
 
 <p>
-<div id="chord-chart">
-
-</div>
 Chord Diagram
 </p>
-
-
+<div id="chord-chart"></div>
 <!--"Bipartite"/Interactivity with Chord!-->
 
 <p>
@@ -216,16 +213,18 @@ Chord Diagram
 <div id="bipartite"> </div>
 <div id="scatterplot"> </div>
 </p>
-<script src="./js/d3/d3.min.js"></script>
-<script src="http://vizjs.org/viz.v1.1.0.min.js"> </script>
-<script src="./js/d3-tip.js"></script>
-<script src="./js/palette.js"></script>
-<script src="./js/map.js"></script>
-<script src="./js/menu.js"></script>
-<script src="./js/population_parser.js"></script>
-<script src="./js/correlation_parser.js"></script>
-<script src="./js/scatterplot.js"></script>
-<script src="./js/bipartite.js"></script>
-<script src="./js/DataParser.js"></script>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/viz.v1.1.0.min.js"> </script>
+<script src="js/d3-tip.js"></script>
+<script src="js/palette.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/population_parser.js"></script>
+<script src="js/correlation_parser.js"></script>
+<script src="js/scatterplot.js"></script>
+<script src="js/bipartite.js"></script>
+<script src="js/chord.js"></script>
+
+
+<script src="js/runsequence.js"></script>
 </body>
 </html>
