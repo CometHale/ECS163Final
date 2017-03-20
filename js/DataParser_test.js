@@ -56,18 +56,19 @@ var LoadData = function()
      } // after files load function
     }); // d3.csv
   }); // foreach file
-         console.log(dataObject);
-console.log(categoryObject);
-console.log(categoryObject["Access"]);
+//          console.log(dataObject);
+// console.log(categoryObject);
+// console.log(categoryObject["Access"]);
   
 }// end LoadData function
 
 LoadData();
+loadCorrParser();
 d3.json("data/us-10m.v1.json", function(usGeo) {
-
-  console.log(dataObject);
-  console.log(categoryObject);
-  console.log(dataObject["PCT_WIC14"]);
-  console.log(categoryObject["Access"]);
+drawbp();
+  // console.log(dataObject);
+  // console.log(categoryObject);
+  // console.log(dataObject["PCT_WIC14"]);
+  // console.log(categoryObject["Access"]);
 });
 

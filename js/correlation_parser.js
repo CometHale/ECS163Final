@@ -1,7 +1,7 @@
-loadCorrParser = function() {
-	correlation_csv = "../data/corr.csv"
+var correlation_dict = {}
 
-	var correlation_dict = {}
+loadCorrParser = function() {
+	correlation_csv = "data/corr.csv"
 
 	d3.csv(correlation_csv,function(corr_data){
 
