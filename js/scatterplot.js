@@ -17,13 +17,14 @@ function drawscatter(var1, var2) {
     prop = prop.slice(1);
     xitem = x_data.get(prop);
     yitem = y_data.get(prop);
-    if (xitem != null && yitem != null) {      
+    if (xitem != null && yitem != null) {  
+      row["FIPS"] = +prop;    
       row["x"] = xitem;
       row["y"] = yitem;
       sp_data.push(row);
     }
-    //Do your logic with the property here
   }
+
   //ranges on axises\
   var sp_x = d3.scaleLinear() 
     .range([0, sp_width])
@@ -40,6 +41,18 @@ function drawscatter(var1, var2) {
 
   var sp_g = sp_svg.append("g")
     .attr("transform", "translate(" + sp_margin.left + "," + sp_margin.top + ")");  
+
+   //tooltip
+  var sp_tooltip = d3.tip()
+    .attr("class", "tooltip")
+    .direction("n")
+    .offset([0, 0])
+    .html(function(d) {
+      console.log(d);
+      return populationByCounty[d.FIPS][1] + ", " + populationByCounty[d.FIPS][0];}); //curr_data is the year we're looking at
+
+  //invoke tip library
+  sp_g.call(sp_tooltip);
 
    //draw axis
   sp_g.append("g")
@@ -69,7 +82,6 @@ function drawscatter(var1, var2) {
       .attr("font-family", "Cinzel")
       .text(var2);
   
-  console.log(sp_data);
   sp_g.selectAll(".dot")
       .data(sp_data)
     .enter().append("circle")
@@ -77,5 +89,7 @@ function drawscatter(var1, var2) {
       .attr("r", 6)
       .attr("cx", function(d) { return sp_x(d.x); })
       .attr("cy", function(d) { return sp_y(d.y); })
-      .attr("fill", "#5B2163");
+      .attr("fill", "#5B2163")
+      .on("mouseover", sp_tooltip.show)
+      .on("mouseout", sp_tooltip.hide);
 }

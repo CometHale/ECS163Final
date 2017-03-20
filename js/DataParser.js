@@ -21,7 +21,7 @@ var LoadData = function()
 {
   d3.tsv("data/VariableKey.tsv", function(data) {
     data.forEach(function(d) {
-    console.log(d.Variable_description);
+    // console.log(d.Variable_description);
       varKey[d.Variable_code] = d.Variable_description;
     });
   });
@@ -64,7 +64,16 @@ var LoadData = function()
      } // after files load function
     }); // d3.csv
   }); // foreach file
-  console.log(dataObject, categoryObject);  
+  // console.log(dataObject, categoryObject);  
 }// end LoadData function
 
 LoadData();
+loadCorrParser();
+LoadPops();
+d3.json("data/us-10m.v1.json", function(usGeo) {
+drawbp();
+  // console.log(dataObject);
+  // console.log(categoryObject);
+  // console.log(dataObject["PCT_WIC14"]);
+  // console.log(categoryObject["Access"]);
+});

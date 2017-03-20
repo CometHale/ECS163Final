@@ -47,7 +47,7 @@ loadCorrParser = function() {
 			}
 		});
 
-		console.log(correlation_dict)
+		// console.log(correlation_dict)
 	});
 
 }

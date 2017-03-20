@@ -1,5 +1,6 @@
 function drawbp() {
   var scatterDrawn = false;
+
   var bp_svg = d3.select("#bipartite")
     .append("svg")
     .attr("width", 1200)
@@ -7,6 +8,18 @@ function drawbp() {
 
   var bp_g = bp_svg.append("g")
     .attr("transform", "translate(300,50)");
+
+console.log("whaaaat", populationByCounty);
+  //tooltip
+  var bp_tooltip = d3.tip()
+    .attr("class", "tooltip")
+    .direction("n")
+    .offset([0, 0])
+    .html(function(d) {
+      return varKey[d.key];}); //curr_data is the year we're looking at
+
+  //invoke tip library
+  bp_g.call(bp_tooltip);
 
   //default categories (for now)
   var cat1 = "Access";
@@ -71,12 +84,17 @@ function drawbp() {
 
   bp_g.call(bp);
 
-  bp_g.selectAll(".mainBars").append("text").attr("class","bplabel")
-    .attr("x",d=>(d.part=="primary"? -30: 30))
-    .attr("y",d=>+6)
-    .text(d=>d.key)
-    .style("font-family", "Cinzel")
-    .attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+  bp_g.selectAll(".mainBars").append("text")
+      .attr("class","bplabel")
+      .attr("x",d=>(d.part=="primary"? -30: 30))
+      .attr("y",d=>+6)
+      .text(d=>d.key)
+      .style("font-family", "Cinzel")
+      .style("fond-size", "8px")
+      .attr("text-anchor",d=>(d.part=="primary"? "end": "start"))
+      .on("mouseover", bp_tooltip.show)
+      .on("mouseout", bp_tooltip.hide);
+
 
 
   bp_bars = bp_g.selectAll(".mainBars")
@@ -116,3 +134,4 @@ function drawbp() {
     
   }
 }
+
