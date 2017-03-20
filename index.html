@@ -197,17 +197,21 @@
 
 <!--Chord Diagram!-->
 
-<p>
-Chord Diagram
-</p>
-<div id="chord-chart"></div>
+<div id="chord">
+	<p>Click on a chord ribbon to generate a detailed bipartite graph for those two categories below.<p>
+	<div id="chord-chart-blurb">Hover over a chord ribbon for more information about it.</div>
+	<div id="chord-chart"></div>
+</div>
+
+<br>
 <!--"Bipartite"/Interactivity with Chord!-->
 
-<p id="bps">
-Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties.
-<div id="bipartite"> </div>
-<div id="scatterplot"> </div>
-</p>
+<div id="bps">
+	<p>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties.</p>
+	<div id="bipartite"> </div>
+	<div id="scatterplot"> </div>
+</div>
+
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/viz.v1.1.0.min.js"> </script>
 <script src="js/d3-tip.js"></script>

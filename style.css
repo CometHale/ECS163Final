@@ -126,10 +126,29 @@ h2{
     display: block;
 }
 
-#chord-chart {
-	width:900px;
+#chord {
+	font-family:'Cinzel';
+	text-align: center;
+	width: 100%;
+	margin-bottom: 100px;
 	height: 900px;
-	margin-left:150px;
+}
+#chord-chart {
+	width:750px;
+	height:750px;
+	position: relative;
+	float:left;
+}
+
+#chord-chart-blurb {
+	float: right;
+	position: relative;
+	width: 300px;
+	height:300px;
+	top:400px;
+	right:80px;
+	text-align: center;
+
 }
 
 text.group-label {

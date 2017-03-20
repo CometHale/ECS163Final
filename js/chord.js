@@ -102,7 +102,7 @@ var loadChord = function(){
 	  .enter().append("path")
 	  	.attr("class",function(d){
 
-	  		return "chord-path " + " path-group-" + d.source.index
+	  		return "chord-path " + " path-start-group-" + d.source.index + " path-end-group-" + d.target.index
 	  	})
 	  	.attr("id", function(d,i){
 	  		return "path-" + i
@@ -116,13 +116,19 @@ var loadChord = function(){
 
 
 	function group_mouseover(d, i) {
-		var selected_group_ribbons = $(".path-group-" + d.index)
+		var selected_start_group_ribbons = $(".path-start-group-" + d.index)
+		var selected_end_group_ribbons = $(".path-end-group-" + d.index)
+
 		$(".chord-path").each(function(path){
         	var path_obj = $("#path-" + path)
         	path_obj.addClass("fade");
         });
 
-        selected_group_ribbons.each(function(path){
+        selected_start_group_ribbons.each(function(path){
+        	$(this).removeClass("fade");
+        });
+
+        selected_end_group_ribbons.each(function(path){
         	$(this).removeClass("fade");
         });
 
@@ -138,7 +144,10 @@ var loadChord = function(){
 
 	function mouseover(d, i) {
 
-		var selected_path = $("#path-" + i)
+		var selected_path = $("#path-" + i);
+		var blurb_div = $("#chord-chart-blurb");
+		var cat_1 = CategoryNames[d.source.index];
+    	var cat_2 = CategoryNames[d.target.index];
 
 		$(".chord-path").each(function(path){
         	var path_obj = $("#path-" + path)
@@ -154,7 +163,7 @@ var loadChord = function(){
         	var path_obj = $("#path-" + path)
         	path_obj.removeClass("fade");
         });
-  
+
     }
 
     function ribbonclick(d, i) {
