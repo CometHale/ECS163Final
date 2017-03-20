@@ -52,18 +52,33 @@ h2{
 
 
 /* style for the map */
+.counties {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+}
+
+/*for drop down menu*/
+
 .container {
     overflow: hidden;
     background-color: #333;
-    font-family: Arial;
+    font-family: 'Cinzel';
 }
 
 .container a {
     float: left;
-    font-size: 13px;
+    font-size: 12px;
     color: white;
     text-align: center;
-    padding: 12px 14px;
+    padding: 10px 12px;
     text-decoration: none;
 }
 
@@ -73,11 +88,12 @@ h2{
 }
 
 .dropdown .dropbtn {
-    font-size: 12px;    
+    font-size: 11px;    
+    font-family: 'Cinzel';
     border: none;
     outline: none;
     color: white;
-    padding: 10px 12px;
+    padding: 9px 11px;
     background-color: inherit;
 }
 
@@ -110,7 +126,6 @@ h2{
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .show {
     display: block;
 }
