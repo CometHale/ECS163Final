@@ -1,4 +1,4 @@
-function drawbp() {
+function drawbp(cat1,cat2) {
   var scatterDrawn = false;
 
   var bp_svg = d3.select("#bipartite")
@@ -21,8 +21,8 @@ function drawbp() {
   bp_g.call(bp_tooltip);
 
   //default categories (for now)
-  var cat1 = "Access";
-  var cat2 = "Demographics";
+  // var cat1 = "Access";
+  // var cat2 = "Demographics";
   var categories1 = Array.from(categoryObject[cat1]);
   var categories2 = Array.from(categoryObject[cat2]);
 
@@ -135,54 +135,54 @@ function drawbp() {
 
 }
 
-function bp_update(cat1, cat2) {
+// function bp_update(cat1, cat2) {
 
-  categories1 = Array.from(categoryObject[cat1]);
-  categories2 = Array.from(categoryObject[cat2]);
+//   categories1 = Array.from(categoryObject[cat1]);
+//   categories2 = Array.from(categoryObject[cat2]);
 
-  bpdata = [];
+//   bpdata = [];
 
-  for (var i = 0; i < categories1.length; i++) {
-    for (var j = 0; j < categories2.length; j++) {
-      row = new Array(); //make new
-      c1 = categories1[i];
-      c2 = categories2[j];
-      row.push(c1); //row format is [c1,c2, c1 info, c2 info]
-      row.push(c2);
-      corr = correlation_dict[c1][c2];
-      if (corr < 0) { //no negative correlations = 0 correlation
-        row.push(0);
-        row.push(0);
-      }
-      else {
-        row.push(corr);
-        row.push(0);  
-      }
-      bpdata.push(row);
-    }
-  }
+//   for (var i = 0; i < categories1.length; i++) {
+//     for (var j = 0; j < categories2.length; j++) {
+//       row = new Array(); //make new
+//       c1 = categories1[i];
+//       c2 = categories2[j];
+//       row.push(c1); //row format is [c1,c2, c1 info, c2 info]
+//       row.push(c2);
+//       corr = correlation_dict[c1][c2];
+//       if (corr < 0) { //no negative correlations = 0 correlation
+//         row.push(0);
+//         row.push(0);
+//       }
+//       else {
+//         row.push(corr);
+//         row.push(0);  
+//       }
+//       bpdata.push(row);
+//     }
+//   }
   
-  bp = viz.bP()
-    .data(bpdata)
-    .min(20)
-    .pad(10)
-    .height(600)
-    .width(500)
-    .barSize(30)
-    .fill(d=>bpcolors[d.primary]);
+//   bp = viz.bP()
+//     .data(bpdata)
+//     .min(20)
+//     .pad(10)
+//     .height(600)
+//     .width(500)
+//     .barSize(30)
+//     .fill(d=>bpcolors[d.primary]);
 
-  //make random colors
-  bpcolors = {};
+//   //make random colors
+//   bpcolors = {};
 
-  for (var i = 0 ; i < bpdata.length; i++) {
-    varOne = bpdata[i][0];
-    varTwo = bpdata[i][1];
-    if (!(varOne in bpcolors)) { //first variable
-      bpcolors[varOne] = "";
-    }
-    if (!(bpdata[varTwo] in bpcolors)) {
-      bpcolors[varTwo] = "";
-    }
-  }
-  bp.update(bpdata);
-}
+//   for (var i = 0 ; i < bpdata.length; i++) {
+//     varOne = bpdata[i][0];
+//     varTwo = bpdata[i][1];
+//     if (!(varOne in bpcolors)) { //first variable
+//       bpcolors[varOne] = "";
+//     }
+//     if (!(bpdata[varTwo] in bpcolors)) {
+//       bpcolors[varTwo] = "";
+//     }
+//   }
+//   bp.update(bpdata);
+// }

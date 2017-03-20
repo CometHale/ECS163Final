@@ -134,7 +134,9 @@ var loadChord = function(){
     function ribbonclick(d, i) {
     	var cat_1 = CategoryNames[d.source.index];
     	var cat_2 = CategoryNames[d.target.index];
-    	bp_update(cat_1,cat_2);
+    	// bp_update(cat_1,cat_2);
+    	$("#bipartite").empty();
+    	drawbp(cat_1,cat_2)
     }
 
 }
