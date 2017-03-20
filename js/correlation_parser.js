@@ -4,7 +4,7 @@ var category_correlations = {} // correlations calculated based on the averaged 
 var cat_var_dict = {}
 
 loadCorrParser = function() {
-	correlation_csv = "../data/corr.csv"
+	correlation_csv = "data/corr.csv"
 
 	d3.csv(correlation_csv,function(corr_data){
 

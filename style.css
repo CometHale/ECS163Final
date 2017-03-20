@@ -3,6 +3,10 @@ h2{
     font-family: 'Cinzel';font-size: 25px;
   }
 
+#bps {
+  font-family:'Cinzel';
+  text-align: center;
+}
 
 /* color information for selections for map to bars */
   .selection1
