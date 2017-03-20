@@ -1,11 +1,11 @@
 function drawbp() {
-
-  var svg = d3.select("#bipartite")
+  var scatterDrawn = false;
+  var bp_svg = d3.select("#bipartite")
     .append("svg")
     .attr("width", 1200)
-    .attr("height", 1000);
+    .attr("height", 700);
 
-  var bp_g = svg.append("g")
+  var bp_g = bp_svg.append("g")
     .attr("transform", "translate(300,50)");
 
   //default categories (for now)
@@ -32,9 +32,6 @@ function drawbp() {
         row.push(corr);
         row.push(0);  
       }
-      
-      // corr = correlation_dict[c2];
-      // row.push(corr[c1]);
       bpdata.push(row);
     }
   }
@@ -75,11 +72,16 @@ function drawbp() {
   bp_g.call(bp);
 
   bp_g.selectAll(".mainBars").append("text").attr("class","bplabel")
-  .attr("x",d=>(d.part=="primary"? -30: 30))
-  .attr("y",d=>+6)
-  .text(d=>d.key)
-  .style("font-family", "Cinzel")
-  .attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+    .attr("x",d=>(d.part=="primary"? -30: 30))
+    .attr("y",d=>+6)
+    .text(d=>d.key)
+    .style("font-family", "Cinzel")
+    .attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+
+
+  bp_bars = bp_g.selectAll(".mainBars")
+    .on("click", bp_mouseclick);
+
 
   function mouseover(d){
     bp.mouseover(d);
@@ -88,4 +90,29 @@ function drawbp() {
   function mouseout(d){
     bp.mouseout(d);
   } 
+
+  var bpkey1 = null;
+  var bpkey2 = null;
+
+  function bp_mouseclick(d) {
+    if (d.part == "primary") {
+      bpkey1 = d.key;
+    }
+    if (d.part == "secondary") {
+      bpkey2 = d.key;
+    }
+    if (bpkey1 != null && bpkey2 != null) {
+      if (scatterDrawn == false) {
+        drawscatter(bpkey1, bpkey2);
+        window.location.href="#scatterplot";
+        scatterDrawn = true;
+      }
+      else {
+        //update scatter
+        window.location.href="#scatterplot";
+      }      
+      //send to scatterplot.js :)
+    }
+    
+  }
 }
