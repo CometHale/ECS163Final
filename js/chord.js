@@ -1,3 +1,5 @@
+var scatterDrawn = false;
+
 var loadChord = function(){
 
 	//Setting up the matrix	
@@ -175,6 +177,9 @@ var loadChord = function(){
     	$('html, body').animate({
 	        scrollTop: $("#bipartite").offset().top
 	    }, 2000);
+
+      bpkey1 = null;
+      bpkey2 = null;
 
     	drawbp(cat_1,cat_2)
     }
