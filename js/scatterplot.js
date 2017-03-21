@@ -71,7 +71,7 @@ function drawscatter(var1, var2) {
       .attr("transform", "translate(0, " + sp_height + ")")
       .call(d3.axisBottom(sp_x));
    
-  sp_g.append("text")
+  xkey = sp_g.append("text")
       .attr("x", sp_width / 2 - sp_margin.right - sp_margin.left)
       .attr("y", sp_height - sp_margin.top + 50)
       .attr("fill", "#000")
@@ -82,16 +82,16 @@ function drawscatter(var1, var2) {
       .text(varKey[var1]);
 
   //y-axis
-  sp_g.append("g")
+  var yaxis = sp_g.append("g")
       .attr("class", "spaxis")  
       .call(d3.axisLeft(sp_y))
-    .append("text")
-      .attr("x", 200)
-      .attr("y", -10)
-      .attr("fill", "#000")
-      .attr("font-weight", "bold")
-      .attr("font-family", "Cinzel")
-      .text(varKey[var2]);
+  ykey = yaxis.append("text")
+        .attr("x", 200)
+        .attr("y", -10)
+        .attr("fill", "#000")
+        .attr("font-weight", "bold")
+        .attr("font-family", "Cinzel")
+        .text(varKey[var2]);
   
   sp_g.selectAll(".dot")
       .data(sp_data)
@@ -119,8 +119,8 @@ function drawscatter(var1, var2) {
     update_sp(curr_var2, curr_var1);
   };
 
-  axisswitch.appendChild(checkbox);
-  axisswitch.appendChild(label);
+  document.getElementById("axisswitch").appendChild(checkbox);
+  document.getElementById("axisswitch").appendChild(label);
 }
 
 function update_sp(var1, var2) {
@@ -139,6 +139,9 @@ function update_sp(var1, var2) {
   var sp_y = d3.scaleLinear() //money
     .range([sp_height, 0])
     .domain([0, y_data.get("max") + 10]);
+
+  xkey.text(varKey[var1]);
+  ykey.text(varKey[var2]);
 
   //code from http://bl.ocks.org/WilliamQLiu/bd12f73d0b79d70bfbae
   d3.select(".spsvg").selectAll("circle")
