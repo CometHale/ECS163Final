@@ -93,14 +93,13 @@ function drawbp(cat1="Access",cat2="Demographics") {
       .style("font-family", "Cinzel")
       .style("fond-size", "8px")
       .attr("text-anchor",d=>(d.part=="primary"? "end": "start"))
-      .on("mouseover", bp_tooltip.show)
-      .on("mouseout", bp_tooltip.hide);
-
-
+      .on("mouseover", function(d) { bp_tooltip.show(d);})
+      .on("mouseout", function(d) { bp_tooltip.hide(d);});
 
   bp_bars = bp_g.selectAll(".mainBars")
-    .on("click", bp_mouseclick);
-
+    .on("click", bp_mouseclick)
+    .on("mouseover", function(d) {document.body.style.cursor = "pointer";})
+    .on("mouseout", function(d) {document.body.style.cursor = "default";});
 
   function mouseover(d){
     bp.mouseover(d);
