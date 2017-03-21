@@ -46,7 +46,7 @@ function MakeMap(variable)
           .enter().append("path")
             .attr("d", path)
             .attr("id", function(d) {
-              return "countyID" + d.id;
+              return "countyID" + (+d.id).toString();
             })
             .on("click", function(d) {
               AddRegion(+d.id);

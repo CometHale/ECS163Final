@@ -43,10 +43,16 @@ function CreateBars()
           return "stroke: " + color + "; stroke-width: 5;";
         });
 
-  var tooltipfuncs = []; 
+  var tooltipfuncs = [];
+  var tooltipfuncs2 = [];
   for (i in attributeArray)
   {
-    attribute  =  attributeArray[i];    
+    attribute  =  attributeArray[i];
+    tooltipfuncs2[attribute] = (function(attr){
+        return function() {
+              showDescToolTip(attr);
+        };
+      }(attribute)); 
     var attrBarSet = bar_svg.append("g")
                             .attr("class","bargroup")
                             .attr("transform", "translate(" + boxOffset + ",0)")
@@ -67,9 +73,7 @@ function CreateBars()
               .attr("transform", "translate(0," + (height + 20) +")")
               .attr("text-anchor", "start")
               .text(attribute)
-              .on("mouseover", function() {
-                  showDescToolTip(attribute);
-                })
+              .on("mouseover", tooltipfuncs2[attribute])
               .on("mousemove", moveDescToolTip)
               .on("mouseout", hideDescToolTip);
                                 
@@ -81,11 +85,11 @@ function CreateBars()
     var scalingFactor = height/(attrMap.get("max"));
 
     attrBarSet.append("text")
-              .attr("transform", "translate(-15,15)")
+              .attr("transform", "translate(-12,15)")
               .attr("text-anchor", "start")
               .text(attrMap.get("max").toString());
     attrBarSet.append("text")
-              .attr("transform", "translate(-15,"+ (height - 5) +")")
+              .attr("transform", "translate(-12,"+ (height - 5) +")")
               .attr("text-anchor", "start")
               .text("0");
               
