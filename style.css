@@ -1,7 +1,13 @@
+h1{
+     text-align: center;
+     font-family: 'Cinzel'; font-size: 15px;
+}
+
 h2{
     text-align: center;
-    font-family: 'Cinzel';font-size: 25px;
+    font-family: 'Cinzel'; font-size: 25px;
   }
+
 
 #bps {
   font-family:'Cinzel';
