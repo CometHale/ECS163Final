@@ -42,7 +42,8 @@ function CreateBars()
           var color = catToColor[varKey[attributeArray[0]][1]];
           return "stroke: " + color + "; stroke-width: 5;";
         });
-  
+
+  var tooltipfuncs = []; 
   for (i in attributeArray)
   {
     attribute  =  attributeArray[i];    
@@ -65,18 +66,41 @@ function CreateBars()
     attrBarSet.append("text")
               .attr("transform", "translate(0," + (height + 20) +")")
               .attr("text-anchor", "start")
-              .text(attribute);
-                            
+              .text(attribute)
+              .on("mouseover", function() {
+                  showDescToolTip(attribute);
+                })
+              .on("mousemove", moveDescToolTip)
+              .on("mouseout", hideDescToolTip);
+                                
     boxOffset = boxOffset + boxWidth;
     
     var xpos = 0;
 
     var attrMap = dataObject[attribute];
     var scalingFactor = height/(attrMap.get("max"));
-  
+
+    attrBarSet.append("text")
+              .attr("transform", "translate(-15,15)")
+              .attr("text-anchor", "start")
+              .text(attrMap.get("max").toString());
+    attrBarSet.append("text")
+              .attr("transform", "translate(-15,"+ (height - 5) +")")
+              .attr("text-anchor", "start")
+              .text("0");
+              
+              
+    tooltipfuncs[attribute] = [];
+
     for (j in regionArray)
     {      
       var yVal = attrMap.get(regionArray[j])*scalingFactor;
+      
+      tooltipfuncs[attribute][j] = (function(attr,jay){
+        return function() {
+              showBarToolTip(regionArray[jay],attr);
+        };
+      }(attribute,j));   
 
       attrBarSet.append("rect")
             .attr("id", "fips" + regionArray[j].toString())
@@ -84,7 +108,10 @@ function CreateBars()
             .attr("width", barWidth)
             .attr("height", yVal)
             .attr("y", height - yVal)
-            .attr("x", xpos);
+            .attr("x", xpos)
+            .on("mouseover", tooltipfuncs[attribute][j])
+            .on("mousemove", moveBarToolTip)
+            .on("mouseout", hideBarToolTip);
 
       xpos = xpos + barWidth;
 
@@ -106,7 +133,7 @@ var AddRegion = function(regionFIPS)
   if(removeStuff)
   {
     d3.selectAll("."+ returnclasses[currRegIdx]).classed(returnclasses[currRegIdx], false); // unclass old selection
-    d3.select("#fips" + regionArray[currRegIdx  ].toString()).remove(); // remove old legend entry one
+    d3.select("#fips" + regionArray[currRegIdx].toString()).remove(); // remove old legend entry one
   }
   else // create legend box
   {
@@ -128,11 +155,11 @@ var AddRegion = function(regionFIPS)
       .text(regionDescription);
 
     regionArray[currRegIdx]= regionFIPS;
+    d3.select("#countyID" + regionFIPS.toString()).classed(returnclasses[currRegIdx], true)//class the new region
 
     CreateBars();
 
     currRegIdx = currRegIdx + 1;
-    return returnclasses[currRegIdx-1];
 } // end AddRegion function
 
 
@@ -148,4 +175,43 @@ var AddAttribute= function(attribute)
   
 } // end AddAttribute function
 
+
+//bar tooltip functions
+  function bartooltipHTML(FIPS,variable){	// function to create html content string in tooltip div.
+          var countyState = populationByCounty[FIPS][1] + ", " + populationByCounty[FIPS][0];
+          var varMap = dataObject[variable];
+          var dataValue = varMap.get(FIPS);
+          var varDesc = varKey[variable][0];
+		  return "<table><tr><td align='center'><b>"+ varDesc + "</b></td></tr><tr><td align='center'><b>in " + countyState +": </b></td></tr><tr><td align='center'>"+ dataValue.toString() +"</td></tr></table>";
+	}
+
+  function showBarToolTip(FIPS,variable) {
+    $("#bartooltip").show().html(bartooltipHTML(FIPS,variable));
+  }
+
+  function moveBarToolTip(){
+    $("#bartooltip").css({ left: d3.event.pageX + 10,
+                        top: d3.event.pageY - 50 });
+  }
+
+  function hideBarToolTip(){
+    $("#bartooltip").hide();
+  }
+
+  function desctooltipHTML(attribute){	// function to create html content string in tooltip div.
+          return varKey[attribute][0];
+	}
+
+  function showDescToolTip(variable) {
+    $("#desctooltip").show().html(desctooltipHTML(variable));
+  }
+
+  function moveDescToolTip(){
+    $("#desctooltip").css({ left: d3.event.pageX + 10,
+                        top: d3.event.pageY - 50 });
+  }
+
+  function hideDescToolTip(){
+    $("#desctooltip").hide();
+  }
 
