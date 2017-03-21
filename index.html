@@ -13,7 +13,6 @@
 <body>
 
 <h2>2015 USDA Food Environment Atlas</h2>
-<h4> Explore the U.S.A. on a food level! Using these visualizations, intestigate the U.S.A. based on the categories below. </h4>
 
 
 <!--DropDown Menu-->
@@ -182,6 +181,8 @@
      <!--!-->
 	</div>
 	<div id = "barpart">
+	  <div id="bartooltip"></div>
+	  <div id="desctooltip"></div>
     <svg id = "bars" width="1000" height="200"></svg>
 	</div>
 </div>
@@ -192,14 +193,10 @@
 <!--Chord Diagram!-->
 
 <div id="chord">
-	<div id="chord-chart-blurb">
-	<br>
-	<br>
-	<b>The chord graph on the left shows how each of the categories correlate to each other across all counties.</b>
+	<div id="chord-chart-blurb">The chord graph on the left shows how each of the categories correlate to each other across all counties.
 		<br>
 		<br>
-		<b> Click on a chord ribbon to generate a detailed bipartite graph for those two categories below. </b>
-		</div>
+		Click on a chord ribbon to generate a detailed bipartite graph for those two categories below.</div>
 	<div id="chord-chart"></div>
 </div>
 
@@ -207,7 +204,7 @@
 <!--"Bipartite"/Interactivity with Chord!-->
 
 <div id="bps">
-	<p> <b>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties. </b></p>
+	<p>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties.</p>
 	<div id="bipartite"> </div>
   <div id="axisswitch"> </div>
 	<div id="scatterplot"> </div>
