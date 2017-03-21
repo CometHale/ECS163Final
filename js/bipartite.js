@@ -98,8 +98,8 @@ function drawbp(cat1="Access",cat2="Demographics") {
 
   bp_bars = bp_g.selectAll(".mainBars")
     .on("click", bp_mouseclick)
-    .on("mouseover", function(d) {document.body.style.cursor = "pointer";})
-    .on("mouseout", function(d) {document.body.style.cursor = "default";});
+    .on("mouseover", function(d) {bp_tooltip.show(d); document.body.style.cursor = "pointer";})
+    .on("mouseout", function(d) {bp_tooltip.hide(d); document.body.style.cursor = "default";});
 
   function mouseover(d){
     bp.mouseover(d);
