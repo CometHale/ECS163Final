@@ -18,8 +18,8 @@ catToColor =
 function MakeMap(variable)
 {
   d3.json("data/us-10m.v1.json", function(us) {
-    
-    var svg = d3.select("#map"),
+
+     var svg = d3.select("#map"),
         width = +svg.attr("width"),
         height = +svg.attr("height");
         
@@ -27,36 +27,49 @@ function MakeMap(variable)
 
     if (variable == "firstLoad")
     {
-      // actually make map
+        //tooltip
+        var map_tooltip = d3.tip()
+          .attr("class", "tooltip")
+          .direction("n")
+          .offset([0, 0])
+          .html(function(d) {
+            return populationByCounty[+d.id][1] + ", " + populationByCounty[+d.id][0];}); //curr_data is the year we're looking at
+
+        //invoke tip library
+        svg.call(map_tooltip);
+      
+       // actually make map
        svg.append("g")
             .attr("class", "counties")
           .selectAll("path")
           .data(topojson.feature(us, us.objects.counties).features)
           .enter().append("path")
-            .attr("fill", "#999999")
-            .attr("d", path);
+            .attr("d", path)
+            .attr("class","county")
+            .on("click", function(d) {
+              newclass = AddRegion(+d.id);
+              d3.select(this).classed(newclass, true)
+            })
+          .on("mouseover", function(d) {
+              d3.select(this).classed("hovered", true);
+              showMapToolTip(+d.id);
+            })
+          .on("mousemove", moveMapToolTip)
+          .on("mouseout", function(d) {
+              d3.select(this).classed("hovered", false);
+              hideMapToolTip();
+              });
         svg.append("path")
             .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
             .attr("class", "states")
             .attr("d", path);
-
-        /*
-        .on("click", clicked)
-        .on("mouseover", function(d) {
-              d3.select(this).classed("hoverstate", true);
-              showToolTip(tooltipHtml(d));
-            })
-        .on("mousemove", moveToolTip)
-        .on("mouseout", function(d) {
-              d3.select(this).classed("hoverstate", false);
-              hideToolTip();
-              });
-        */ 
+            
       firstLoad = false;
-    }
+    } // end if first load
 
     else
     {
+      AddAttribute(variable);
       d3.selectAll(".legend").remove(); //deletes anay previously created legends
       
       var mapData = dataObject[variable];
@@ -112,28 +125,42 @@ function MakeMap(variable)
       //update map
       svg.selectAll("path")
         .data(topojson.feature(us, us.objects.counties).features)
-                       .attr("fill", function(d) {
-                  if (isNaN(mapData.get(+d.id)))
-                  {
-                    return "#999999";
-                  } else
-                    {
-                      return color(mapData.get(+d.id));
-                    }
-                  });
-          /*.on("click", clicked)
-          .on("mouseover", function(d) {
-              d3.select(this).classed("hoverstate", true);
-              showToolTip(tooltipHtml(d));
-            })
-          .on("mousemove", moveToolTip)
-          .on("mouseout", function(d) {
-              d3.select(this).classed("hoverstate", false);
-              hideToolTip();
-              }); */
-    }
+          .attr("fill", function(d) {
+            if (isNaN(mapData.get(+d.id)))
+            {
+              return "#999999";
+            } else
+            {
+              return color(mapData.get(+d.id));
+            }
+         });
 
+      } // end if not the first load
     }); //d3 json function
    
 } //MakeMap function
+
+
+
+
+//map tooltip functions
+  function maptooltipHTML(FIPS){	// function to create html content string in tooltip div.
+          var countyState = populationByCounty[FIPS][1] + ", " + populationByCounty[FIPS][0];
+          var popNum = populationByCounty[FIPS][2];
+          var popString = "Population: " + d3.format(",")(popNum);
+		  return "<table><tr><td align='center'><b>"+ countyState +"</b></td></tr><tr><td align='center'>"+ popString +"</td></tr></table>";
+	}
+
+  function showMapToolTip(FIPS) {
+    $("#maptooltip").show().html(maptooltipHTML(FIPS));
+  }
+
+  function moveMapToolTip(){
+    $("#maptooltip").css({ left: d3.event.pageX + 10,
+                        top: d3.event.pageY - 50 });
+  }
+
+  function hideMapToolTip(){
+    $("#maptooltip").hide();
+  }
 
