@@ -86,8 +86,9 @@ function drawscatter(var1, var2) {
       .attr("class", "spaxis")  
       .call(d3.axisLeft(sp_y))
   ykey = yaxis.append("text")
-        .attr("x", 200)
-        .attr("y", -10)
+        .attr("x", -100)
+        .attr("y", -30)
+        .attr("transform", "rotate(270)")
         .attr("fill", "#000")
         .attr("font-weight", "bold")
         .attr("font-family", "Cinzel")
@@ -100,7 +101,7 @@ function drawscatter(var1, var2) {
       .attr("r", 6)
       .attr("cx", function(d) { return sp_x(d.x); })
       .attr("cy", function(d) { return sp_y(d.y); })
-      .attr("fill", "#5B2163")
+      .attr("fill", " #ffb84d")
       .on("mouseover", sp_tooltip.show)
       .on("mouseout", sp_tooltip.hide);
 
@@ -150,7 +151,7 @@ function update_sp(var1, var2) {
     .duration(1000)
     .on("start", function() {  // Start animation
         d3.select(this)  // 'this' means the current element
-            .attr("fill", "blue")  // Change color
+            .attr("fill", "#6699ff")  // Change color
             .attr("r", 3);  // Change size
     })
     .delay(function(d, i) {
@@ -167,7 +168,7 @@ function update_sp(var1, var2) {
       d3.select(this)  // 'this' means the current element
           .transition()
           .duration(500)
-          .attr("fill", "purple")  // Change color
+          .attr("fill", "#ffb84d")  // Change color
           .attr("r", 6);  // Change radius
     });
 
