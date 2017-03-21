@@ -9,58 +9,95 @@ h2{
 }
 
 /* color information for selections for map to bars */
-  .selection1
+  .selection1bar
   {
     fill: #ff0000;		/* red */
-    stroke: #ff0000;
   }
   
-  .selection2
+  .selection2bar
   {
     fill: #009933;		/* green */		
-    stroke: #009933;
   }
 
-  .selection3
+  .selection3bar
   {
     fill: #3333ff;		/* blue */  
-    stroke: #3333ff;
   }
 
-  .selection4
+  .selection4bar
   {
     fill: #660066; /* dark purple */
-    stroke: #660066;
   }
 
-  .selection5
+  .selection5bar
   {
     fill: #ff9900;		/* orange */
-    stroke: #ff9900;
   }
 
+  .selection1path
+  {
+    stroke: #ff0000;
+    stroke-width: 3px;
+  }
+  
+  .selection2path
+  {	
+    stroke: #009933;
+    stroke-width: 3px;
+  }
 
-  .active{
+  .selection3path
+  {
+    stroke: #3333ff;
+    stroke-width: 3px;
+  }
 
-    stroke-width: 1.5px;
+  .selection4path
+  {
+    stroke: #660066;
+    stroke-width: 3px;
+  }
 
-    fill: white;
+  .selection5path
+  {
+    stroke: #ff9900;
+    stroke-width: 3px;
+  }
+
+  .hovered{
+
+    stroke-width: 3px;
+
+    fill-opacity: 0.6;
 
     stroke: yellow;
 
   }
 
+  
+  #maptooltip{
+    position: absolute;
+    display: none;
+		background:rgba(0,0,0,0.9);
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:16px;
+		width:auto;
+		padding:4px;
+		color:white;
+	  text-align: justify;
+	}  
 
 /* style for the map */
 .counties {
-  fill: none;
-  stroke: #fff;
+  fill: #666666;
+  stroke: #999999;
   stroke-width: 0.5px;
 }
 
 .states {
   fill: none;
-  stroke: #fff;
+  stroke: #999999;
   stroke-width: 1px;
   stroke-linejoin: round;
 }
