@@ -155,7 +155,7 @@ function update_sp(var1, var2) {
             .attr("r", 3);  // Change size
     })
     .delay(function(d, i) {
-        return i / sp_data.length * 500;  // Dynamic delay (i.e. each item delays a little longer)
+        return i / sp_data.length;  // Dynamic delay (i.e. each item delays a little longer)
     })
     //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
     .attr("cx", function(d) {
