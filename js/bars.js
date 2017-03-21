@@ -89,6 +89,18 @@ function CreateBars()
               .attr("text-anchor", "start")
               .text(attrMap.get("max").toString());
     attrBarSet.append("text")
+              .attr("transform", "translate(-15,7)")
+              .attr("text-anchor", "start")
+              .text("-");
+    attrBarSet.append("text")
+              .attr("transform", "translate(-15,"+ (height/2) +")")
+              .attr("text-anchor", "start")
+              .text("-");
+    attrBarSet.append("text")
+              .attr("transform", "translate(-15,"+ height + ")")
+              .attr("text-anchor", "start")
+              .text("-");
+    attrBarSet.append("text")
               .attr("transform", "translate(-12,"+ (height - 5) +")")
               .attr("text-anchor", "start")
               .text("0");
