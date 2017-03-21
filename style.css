@@ -70,6 +70,7 @@ h2{
     stroke-width: 3px;
   }
 
+  
   .hovered{
 
     stroke-width: 3px;
@@ -92,7 +93,33 @@ h2{
 		padding:4px;
 		color:white;
 	  text-align: justify;
-	}  
+	}
+
+	#bartooltip{
+    position: absolute;
+    display: none;
+		background:rgba(0,0,0,0.9);
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:16px;
+		width:auto;
+		padding:4px;
+		color:white;
+	  text-align: justify;
+	}
+
+  #desctooltip{
+    position: absolute;
+    display: none;
+		background: #fff;
+		border:1px solid grey;
+		border-radius:5px;
+		font-size:16px;
+		width:auto;
+		padding:4px;
+		color: black;
+	  text-align: justify
+	}
 
 /* style for the map */
 .counties {
