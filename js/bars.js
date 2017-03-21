@@ -40,18 +40,27 @@ function CreateBars()
       .attr("style", function()
         {
           var color = catToColor[varKey[attributeArray[0]][1]];
-          return "stroke: " + color + "; stroke-width: 2;";
+          return "stroke: " + color + "; stroke-width: 5;";
         });
   
   for (i in attributeArray)
   {
-    attribute  =  attributeArray[i];
-    console.log(attribute);
-    
+    attribute  =  attributeArray[i];    
     var attrBarSet = bar_svg.append("g")
                             .attr("class","bargroup")
                             .attr("transform", "translate(" + boxOffset + ",0)")
                             .attr("id", attribute);
+
+    attrBarSet.append("rect")
+      .attr("height",height)
+      .attr("width",boxWidth)
+      .attr("x",-barWidth/2)
+      .attr("fill", "none")
+      .attr("style", function()
+        {
+          var color = catToColor[varKey[attribute][1]];
+          return "stroke: " + color + "; stroke-width: 2;";
+        });
                             
     attrBarSet.append("text")
               .attr("transform", "translate(0," + (height + 20) +")")

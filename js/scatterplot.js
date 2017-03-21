@@ -101,8 +101,15 @@ function drawscatter(var1, var2) {
       .attr("r", 6)
       .attr("cx", function(d) { return sp_x(d.x); })
       .attr("cy", function(d) { return sp_y(d.y); })
-      .attr("fill", " #ffb84d")
+      .attr("fill", "#6699ff")
       .on("mouseover", sp_tooltip.show)
+      .on("click", function(d){
+          AddRegion(d.FIPS);
+          $('html, body').animate({
+	          scrollTop: $("#map-and-bar").offset().top
+	        }, 2000);
+          
+        })
       .on("mouseout", sp_tooltip.hide);
 
   //create checkbox to switch axes
@@ -151,7 +158,7 @@ function update_sp(var1, var2) {
     .duration(1000)
     .on("start", function() {  // Start animation
         d3.select(this)  // 'this' means the current element
-            .attr("fill", "#6699ff")  // Change color
+            .attr("fill","#ffb84d")  // Change color
             .attr("r", 3);  // Change size
     })
     .delay(function(d, i) {
@@ -168,7 +175,7 @@ function update_sp(var1, var2) {
       d3.select(this)  // 'this' means the current element
           .transition()
           .duration(500)
-          .attr("fill", "#ffb84d")  // Change color
+          .attr("fill", "#6699ff")  // Change color
           .attr("r", 6);  // Change radius
     });
 
