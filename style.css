@@ -14,30 +14,36 @@ h2{
   text-align: center;
 }
 
+
 /* color information for selections for map to bars */
   .selection1bar
   {
     fill: #ff0000;		/* red */
+    fill-opacity: 0.8;
   }
   
   .selection2bar
   {
-    fill: #009933;		/* green */		
+    fill: #009933;		/* green */
+    fill-opacity: 0.8;	
   }
 
   .selection3bar
   {
     fill: #3333ff;		/* blue */  
+    fill-opacity: 0.8;
   }
 
   .selection4bar
   {
     fill: #660066; /* dark purple */
+    fill-opacity: 0.8;
   }
 
   .selection5bar
   {
     fill: #ff9900;		/* orange */
+    fill-opacity: 0.8;
   }
 
   .selection1path
@@ -69,6 +75,7 @@ h2{
     stroke: #ff9900;
     stroke-width: 3px;
   }
+
 
   
   .hovered{

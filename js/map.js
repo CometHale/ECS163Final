@@ -45,10 +45,11 @@ function MakeMap(variable)
           .data(topojson.feature(us, us.objects.counties).features)
           .enter().append("path")
             .attr("d", path)
-            .attr("class","county")
+            .attr("id", function(d) {
+              return "countyID" + (+d.id).toString();
+            })
             .on("click", function(d) {
-              newclass = AddRegion(+d.id);
-              d3.select(this).classed(newclass, true)
+              AddRegion(+d.id);
             })
           .on("mouseover", function(d) {
               d3.select(this).classed("hovered", true);
