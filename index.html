@@ -13,6 +13,9 @@
 <body>
 
 <h2>2015 USDA Food Environment Atlas</h2>
+<h1> Explore the U.S.A. and its relation to food!</h1>
+<h1>Investiage 13 categories to find coorelations and answer questions like: how is socioeconomic data related to food security, poverty, and health? How do socioeconomic issues affect people in different states and counties differently? Is geography a factor to food access? </h1>
+
 
 
 <!--DropDown Menu-->
@@ -69,10 +72,10 @@
   <div class="dropdown">
     <button class="dropbtn" onclick="myFunction5()">Education</button>
     <div class="dropdown-content" id="myDropdown5">
-      <a href="#top" onclick="MakeMap('P_NOHS')">Adults Less Than A High School Diploma</a>
-      <a href="#top" onclick="MakeMap('P_HSONLY')">Adults With A High School Diploma Only</a>
-      <a href="#top" onclick="MakeMap('P_SOMECOLLEGE')">Adults With Some College Or Associate's Degree</a>
-      <a href="#top" onclick="MakeMap('P_BACHELORS')">Adults With A Bachelors Degree Or Higher</a>
+      <a href="#top" onclick="MakeMap('P_NOHS')">Adults Less Than A High School Diploma 2011 - 2015</a>
+      <a href="#top" onclick="MakeMap('P_HSONLY')">Adults With A High School Diploma Only 2011 - 2015</a>
+      <a href="#top" onclick="MakeMap('P_SOMECOLLEGE')">Adults With Some College Or Associate's Degree 2011 - 2015</a>
+      <a href="#top" onclick="MakeMap('P_BACHELORS')">Adults With A Bachelors Degree Or Higher 2011 - 2015</a>
     </div>
   </div> 
 
@@ -193,10 +196,15 @@
 <!--Chord Diagram!-->
 
 <div id="chord">
-	<div id="chord-chart-blurb">The chord graph on the left shows how each of the categories correlate to each other across all counties.
+	<div id="chord-chart-blurb">
 		<br>
 		<br>
-		Click on a chord ribbon to generate a detailed bipartite graph for those two categories below.</div>
+			<b>The chord graph on the left shows how each of the categories correlate to each other across all counties.</b>
+		<br>
+		<br>
+			<b>Click on a chord ribbon to generate a detailed bipartite graph for those two categories below.
+			</b>
+	</div>
 	<div id="chord-chart"></div>
 </div>
 
@@ -204,7 +212,7 @@
 <!--"Bipartite"/Interactivity with Chord!-->
 
 <div id="bps">
-	<p>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties.</p>
+	<p> <b>Click on a bar on both the left and right side to see a scatterplot of comparisons across all counties. </b> </p>
 	<div id="bipartite"> </div>
   <div id="axisswitch"> </div>
 	<div id="scatterplot"> </div>
